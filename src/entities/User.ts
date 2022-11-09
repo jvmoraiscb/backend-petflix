@@ -3,8 +3,8 @@ class User {
     public email!: string
     public name!: string
     public password!: string
-    public favorite_movies_id!: number[]
-    public evaluations_id!: number[]
+    public favorite_movies_id?: number[]
+    public evaluations_id?: number[]
 
     constructor(props: Omit<User, 'id'>, id?: number) {
         if (id) {
