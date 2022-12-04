@@ -7,6 +7,7 @@ interface IUsersRepository {
     deleteUser(email: string): Promise<void>;
     findByEmail(email: string): Promise<User | null>;
     findById(id: number): Promise<User | null>;
+    deleteUser(email: string): Promise<void>;
 }
 
 export { IUsersRepository };
