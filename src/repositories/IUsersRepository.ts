@@ -1,8 +1,12 @@
-import { User } from '../entities/User'
+import { User } from '@prisma/client';
 
-export interface IUsersRepository {
-    createUser(user: Omit<User, 'id'>): Promise<User | undefined>
-    deleteUser(email: string): Promise<User | undefined>
-    findByEmail(email: string): Promise<User | undefined>
-    findById(id: number): Promise<User | undefined>
+interface IUsersRepository {
+    createUser(
+        user: Omit<User, 'id' | 'createdAt' | 'updatedAt'>
+    ): Promise<User>;
+    deleteUser(email: string): Promise<void>;
+    findByEmail(email: string): Promise<User | null>;
+    findById(id: number): Promise<User | null>;
 }
+
+export { IUsersRepository };
