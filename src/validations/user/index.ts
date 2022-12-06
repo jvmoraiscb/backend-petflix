@@ -1,2 +1,2 @@
 export * from './AddUserValidation';
-export * from './DeleteUserValidation';
+export * from './FindByEmailUserValidation';
