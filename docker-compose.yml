@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+    users:
+        container_name: petfilmes
+        image: postgres
+        environment:
+            - 'POSTGRES_USER=postgres'
+            - 'POSTGRES_PASSWORD=postgres'
+        ports:
+            - 5432:5432
+        restart: always
