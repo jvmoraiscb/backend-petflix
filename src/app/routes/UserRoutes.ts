@@ -1,11 +1,22 @@
 import { Router } from 'express';
-import { AddUserController, FindByEmailUserController } from '../controllers';
-import { UserRepository } from '../../providers';
-import { DbAddUser, DbFindByEmailUser } from '../../usecases';
+import {
+    AddUserController,
+    FindByEmailUserController,
+    LoginUserController
+} from '../controllers';
+import { PasswordHelper, TokenHelper, UserRepository } from '../../providers';
+import { DbAddUser, DbFindByEmailUser, DbLoginUser } from '../../usecases';
 
 const usersRepository = new UserRepository();
+const passwordHelper = new PasswordHelper();
+const tokenHelper = new TokenHelper();
 
-const dbAddUser = new DbAddUser(usersRepository);
+const dbAddUser = new DbAddUser(usersRepository, passwordHelper);
+const dbLoginUser = new DbLoginUser(
+    usersRepository,
+    passwordHelper,
+    tokenHelper
+);
 const dbFindByEmailUser = new DbFindByEmailUser(usersRepository);
 
 export const UserRoutes = (router: Router) => {
@@ -14,4 +25,5 @@ export const UserRoutes = (router: Router) => {
         new FindByEmailUserController(dbFindByEmailUser).handle
     );
     router.post('/user', new AddUserController(dbAddUser).handle);
+    router.get('/login', new LoginUserController(dbLoginUser).handle);
 };
