@@ -1,18 +1,19 @@
+import { User } from '@prisma/client';
 import { IUsersRepository } from '../../repositories';
 import { FindByEmailUserValidation } from '../../validations';
 
-class DbDeleteUser {
+class DbLoginUser {
     constructor(private readonly usersRepository: IUsersRepository) {}
 
-    async execute(data: { email: string }): Promise<void> {
+    async execute(data: { email: string }): Promise<User | null> {
         const { email } = data;
         await FindByEmailUserValidation(data);
         const userExists = await this.usersRepository.findByEmail(email);
         if (userExists === null) {
             throw new Error('User does not exists.');
         }
-        await this.usersRepository.deleteUser(email);
+        return await this.usersRepository.findByEmail(email);
     }
 }
 
-export { DbDeleteUser };
+export { DbLoginUser };

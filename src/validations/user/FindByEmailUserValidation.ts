@@ -8,7 +8,9 @@ const FindByEmailUserValidation = async (body: any): Promise<void> => {
     const isValid = await UserSchema.isValid(body);
 
     if (!isValid) {
-        throw new Error('Missing or invalid parameters');
+        throw new Error(
+            'Missing or invalid parameters! Required fields: email'
+        );
     }
 };
 
