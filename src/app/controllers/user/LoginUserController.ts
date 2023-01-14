@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { DbLoginUser } from '../../../usecases';
+import { DbLoginUser } from '../../../useCases';
 
 class LoginUserController {
     constructor(private dbLoginUser: DbLoginUser) {
@@ -13,7 +13,7 @@ class LoginUserController {
                 email,
                 password
             });
-            return response.status(200).send({ email: email, token: token });
+            return response.status(200).send({ token: token });
         } catch (err: any) {
             return response.status(400).json({
                 message: err.message || 'Unexpected Error!'

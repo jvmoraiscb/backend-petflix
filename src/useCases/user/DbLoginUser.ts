@@ -1,4 +1,3 @@
-import { User } from '@prisma/client';
 import { IUsersRepository } from '../../repositories';
 import { IPasswordHelper, ITokenHelper } from '../../helpers';
 import { FindByEmailUserValidation } from '../../validations';

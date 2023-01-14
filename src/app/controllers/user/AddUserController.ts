@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { DbAddUser } from '../../../usecases';
+import { DbAddUser } from '../../../useCases';
 
 class AddUserController {
     constructor(private dbAddUser: DbAddUser) {
@@ -7,12 +7,13 @@ class AddUserController {
     }
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const { name, email, password } = request.body;
+        const { name, email, password, profilePic } = request.body;
         try {
             const user = await this.dbAddUser.execute({
-                name,
                 email,
-                password
+                password,
+                name,
+                profilePic
             });
             return response.status(201).send(user);
         } catch (err: any) {

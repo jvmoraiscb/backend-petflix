@@ -3,7 +3,8 @@ import * as yup from 'yup';
 let UserSchema = yup.object().shape({
     name: yup.string().required(),
     email: yup.string().email().required(),
-    password: yup.string().required()
+    password: yup.string().required(),
+    profilePic: yup.string().required()
 });
 
 const AddUserValidation = async (body: any): Promise<void> => {
@@ -11,7 +12,7 @@ const AddUserValidation = async (body: any): Promise<void> => {
 
     if (!isValid) {
         throw new Error(
-            'Missing or invalid parameters! Required fields: name, email and password'
+            'Missing or invalid parameters! Required fields: email, password, name and profilePic'
         );
     }
 };
