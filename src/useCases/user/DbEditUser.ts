@@ -25,14 +25,21 @@ class DbEditUser {
             name: newName,
             profilePic: newProfilePic
         } = data;
-
-        if (newPassword !== undefined) {
-            newPassword = await this.passwordHelper.hashPassword(newPassword);
-        }
-
+        
         const email = await this.tokenHelper.verifyToken(token);
         if (!email) {
             throw new Error('Invalid token!');
+        }
+        if (newPassword !== undefined) {
+            newPassword = await this.passwordHelper.hashPassword(newPassword);
+        }
+        if (newEmail !== undefined) {
+            const userAlreadyExists = await this.usersRepository.findByEmail(
+                newEmail
+            );
+            if (userAlreadyExists !== null) {
+                throw new Error('Email already exists.');
+            }
         }
 
         return await this.usersRepository.editUser(

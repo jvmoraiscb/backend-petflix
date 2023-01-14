@@ -18,7 +18,7 @@ class DbDeleteUser {
         }
         const userExists = await this.usersRepository.findByEmail(email);
         if (userExists === null) {
-            throw new Error('how?');
+            throw new Error('Invalid token!');
         }
         await this.usersRepository.deleteUser(email);
     }
