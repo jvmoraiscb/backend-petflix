@@ -1,9 +1,9 @@
 import { IUsersRepository } from '../../repositories';
-import { AddUserValidation } from '../../validations';
+import { CreateUserValidation } from '../../validations';
 import { IPasswordHelper } from '../../helpers';
 import { User } from '../../entities';
 
-class DbAddUser {
+class DbCreateUser {
     constructor(
         private usersRepository: IUsersRepository,
         private passwordHelper: IPasswordHelper
@@ -15,7 +15,7 @@ class DbAddUser {
         name: string;
         profilePic: string;
     }): Promise<User> {
-        await AddUserValidation(data);
+        await CreateUserValidation(data);
         let { email, password, name, profilePic } = data;
         const userAlreadyExists = await this.usersRepository.findByEmail(email);
         if (userAlreadyExists !== null) {
@@ -31,4 +31,4 @@ class DbAddUser {
     }
 }
 
-export { DbAddUser };
+export { DbCreateUser };

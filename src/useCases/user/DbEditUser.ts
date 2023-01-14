@@ -1,21 +1,47 @@
-import { ITokenHelper } from '../../helpers';
+import { User } from '../../entities';
+import { IPasswordHelper, ITokenHelper } from '../../helpers';
 import { IUsersRepository } from '../../repositories';
 import { TokenUserValidation } from '../../validations';
 
 class DbEditUser {
     constructor(
         private usersRepository: IUsersRepository,
+        private passwordHelper: IPasswordHelper,
         private tokenHelper: ITokenHelper
     ) {}
 
-    async execute(data: { token: string }): Promise<void> {
+    async execute(data: {
+        token: string;
+        email?: string;
+        password?: string;
+        name?: string;
+        profilePic?: string;
+    }): Promise<User> {
         await TokenUserValidation(data);
-        const { token } = data;
+        let {
+            token,
+            email: newEmail,
+            password: newPassword,
+            name: newName,
+            profilePic: newProfilePic
+        } = data;
+
+        if (newPassword !== undefined) {
+            newPassword = await this.passwordHelper.hashPassword(newPassword);
+        }
+
         const email = await this.tokenHelper.verifyToken(token);
         if (!email) {
             throw new Error('Invalid token!');
         }
-        await this.usersRepository.deleteUser(email);
+
+        return await this.usersRepository.editUser(
+            email,
+            newEmail,
+            newPassword,
+            newName,
+            newProfilePic
+        );
     }
 }
 

@@ -7,11 +7,8 @@ class DeleteUserController {
     }
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const { token } = request.body;
         try {
-            await this.dbDeleteUser.execute({
-                token
-            });
+            await this.dbDeleteUser.execute(request.body);
             return response.status(202).send();
         } catch (err: any) {
             return response.status(400).json({

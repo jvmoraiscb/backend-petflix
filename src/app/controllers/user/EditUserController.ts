@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
-import { DbCreateUser } from '../../../useCases';
+import { DbEditUser } from '../../../useCases';
 
-class CreateUserController {
-    constructor(private dbCreateUser: DbCreateUser) {
+class EditUserController {
+    constructor(private dbEditUser: DbEditUser) {
         this.handle = this.handle.bind(this);
     }
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const user = await this.dbCreateUser.execute(request.body);
+            const user = await this.dbEditUser.execute(request.body);
             return response.status(201).send(user);
         } catch (err: any) {
             return response.status(400).json({
@@ -18,4 +18,4 @@ class CreateUserController {
     }
 }
 
-export { CreateUserController };
+export { EditUserController };

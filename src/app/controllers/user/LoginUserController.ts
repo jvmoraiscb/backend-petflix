@@ -7,12 +7,8 @@ class LoginUserController {
     }
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const { email, password } = request.body;
         try {
-            const token = await this.dbLoginUser.execute({
-                email,
-                password
-            });
+            const token = await this.dbLoginUser.execute(request.body);
             return response.status(200).send({ token: token });
         } catch (err: any) {
             return response.status(400).json({

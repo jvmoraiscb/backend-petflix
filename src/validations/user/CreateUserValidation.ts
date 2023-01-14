@@ -7,7 +7,7 @@ let UserSchema = yup.object().shape({
     profilePic: yup.string().required()
 });
 
-const AddUserValidation = async (body: any): Promise<void> => {
+const CreateUserValidation = async (body: any): Promise<void> => {
     const isValid = await UserSchema.isValid(body);
 
     if (!isValid) {
@@ -17,4 +17,4 @@ const AddUserValidation = async (body: any): Promise<void> => {
     }
 };
 
-export { AddUserValidation };
+export { CreateUserValidation };

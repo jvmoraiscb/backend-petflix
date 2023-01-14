@@ -7,11 +7,8 @@ class FindByEmailUserController {
     }
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const { email } = request.body;
         try {
-            const user = await this.dbFindByEmailUser.execute({
-                email
-            });
+            const user = await this.dbFindByEmailUser.execute(request.body);
             return response.status(202).send(user);
         } catch (err: any) {
             return response.status(400).json({

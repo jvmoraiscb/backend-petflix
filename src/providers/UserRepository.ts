@@ -25,6 +25,35 @@ class UserRepository implements IUsersRepository {
             }
         });
     }
+    async editUser(
+        email: string,
+        newEmail: string,
+        newPassword: string,
+        newName: string,
+        newProfilePic: string
+    ): Promise<User> {
+        const updates: any = {};
+        if (newEmail !== undefined) {
+            updates.email = newEmail;
+        }
+        if (newPassword !== undefined) {
+            updates.password = newPassword;
+        }
+        if (newName !== undefined) {
+            updates.name = newName;
+        }
+        if (newProfilePic !== undefined) {
+            updates.profilePic = newProfilePic;
+        }
+        const userUpdate = await database.prismaUser.update({
+            where: {
+                email
+            },
+            data: updates
+        });
+
+        return pUserToUser(userUpdate);
+    }
 
     async findById(id: number): Promise<User | null> {
         const user = await database.prismaUser.findUnique({
