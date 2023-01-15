@@ -1,7 +1,8 @@
-import { Movie } from '../entities/Movie';
+import { Movie } from '../entities';
 
 interface IMoviesRepositoty {
-    createMovie(
+    create(
+        movieId: string,
         imdbId: string,
         title: string,
         year: string,
@@ -9,11 +10,13 @@ interface IMoviesRepositoty {
         plot: string,
         poster: string
     ): Promise<Movie>;
-    deleteMovie(movieId: number): Promise<void>;
-    addUser(movieId: number, userId: number): Promise<void>;
-    removeUser(movieId: number, userId: number): Promise<void>;
-    addEvaluation(movieId: number, evaluationId: number): Promise<void>;
-    removeEvaluation(movieId: number, evaluationId: number): Promise<void>;
+    delete(movieId: string): Promise<void>;
+    addUser(movieId: string, userId: string): Promise<void>;
+    removeUser(movieId: string, userId: string): Promise<void>;
+    addEvaluation(movieId: string, evaluationId: string): Promise<void>;
+    removeEvaluation(movieId: string, evaluationId: string): Promise<void>;
+    findById(movieId: string): Promise<Movie | null>;
+    findByImdbId(imdbId: string): Promise<Movie | null>;
 }
 
 export { IMoviesRepositoty };

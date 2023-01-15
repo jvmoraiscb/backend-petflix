@@ -1,9 +1,9 @@
 type Evaluation = {
-    id: number;
+    id: string;
     rating: number;
     comment: string;
-    userId: number;
-    movieId: number;
+    userId: string;
+    movieId: string;
     createdAt: Date;
     updatedAt: Date;
 };

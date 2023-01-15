@@ -1,13 +1,20 @@
 type Movie = {
-    id: number;
+    id: string;
     imdbId: string;
     title: string;
-    year: number;
+    type: string;
+    runtime: string;
+    year: string;
     genre: string;
     plot: string;
     poster: string;
-    evaluationsId: number[];
-    usersId: number[];
+    director: string;
+    writer: string;
+    actors: string;
+    metascore: string;
+    imdbRating: string;
+    evaluationsId: string[];
+    usersId: string[];
     createdAt: Date;
     updatedAt: Date;
 };
