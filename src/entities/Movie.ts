@@ -1,5 +1,6 @@
 type Movie = {
     id: number;
+    imdbId: number;
     title: string;
     poster: string;
     evaluationsId: number[];

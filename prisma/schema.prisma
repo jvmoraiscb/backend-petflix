@@ -24,7 +24,7 @@ model PrismaUser {
 
 model PrismaMovie {
   id            Int          @id @default(autoincrement())
-  idImdb        String       @unique
+  imdbId        String       @unique
   title         String
   poster        String
   evaluationsId Int[]

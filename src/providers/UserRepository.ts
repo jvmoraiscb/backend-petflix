@@ -1,6 +1,5 @@
 import { database } from '../app/config/database';
 import { IUsersRepository } from '../repositories';
-import { PrismaUser } from '@prisma/client';
 import { User } from '../entities';
 
 class UserRepository implements IUsersRepository {
@@ -12,10 +11,10 @@ class UserRepository implements IUsersRepository {
     ): Promise<User> {
         const evaluationsId = [] as number[];
         const moviesId = [] as number[];
-        const pUser = await database.prismaUser.create({
+        const user = await database.prismaUser.create({
             data: { name, email, password, profilePic, evaluationsId, moviesId }
         });
-        return pUserToUser(pUser);
+        return user;
     }
 
     async deleteUser(email: string): Promise<void> {
@@ -52,7 +51,79 @@ class UserRepository implements IUsersRepository {
             data: updates
         });
 
-        return pUserToUser(userUpdate);
+        return userUpdate;
+    }
+
+    async addMovie(email: string, movieId: number): Promise<void> {
+        const user = await database.prismaUser.findUnique({
+            where: {
+                email
+            }
+        });
+        if (user !== null) {
+            const moviesId = user.moviesId;
+            moviesId.push(movieId);
+            await database.prismaUser.update({
+                where: {
+                    email
+                },
+                data: { moviesId }
+            });
+        }
+    }
+
+    async removeMovie(email: string, movieId: number): Promise<void> {
+        const user = await database.prismaUser.findUnique({
+            where: {
+                email
+            }
+        });
+        if (user !== null) {
+            const moviesId = user.moviesId;
+            moviesId.splice(moviesId.indexOf(movieId), 1);
+            await database.prismaUser.update({
+                where: {
+                    email
+                },
+                data: { moviesId }
+            });
+        }
+    }
+
+    async addEvaluation(email: string, evaluationId: number): Promise<void> {
+        const user = await database.prismaUser.findUnique({
+            where: {
+                email
+            }
+        });
+        if (user !== null) {
+            const evaluationsId = user.evaluationsId;
+            evaluationsId.push(evaluationId);
+            await database.prismaUser.update({
+                where: {
+                    email
+                },
+                data: { evaluationsId }
+            });
+        }
+    }
+
+    async removeEvaluation(email: string, evaluationId: number): Promise<void> {
+        const user = await database.prismaUser.findUnique({
+            where: {
+                email
+            }
+        });
+        if (user !== null) {
+            const evaluationsId = user.evaluationsId;
+            evaluationsId.splice(evaluationsId.indexOf(evaluationId), 1);
+            await database.prismaUser.update({
+                where: {
+                    email
+                },
+                data: { evaluationsId }
+            });
+        }
     }
 
     async findById(id: number): Promise<User | null> {
@@ -62,11 +133,7 @@ class UserRepository implements IUsersRepository {
             }
         });
 
-        if (user === null) {
-            return null;
-        }
-
-        return pUserToUser(user);
+        return user;
     }
 
     async findByEmail(email: string): Promise<User | null> {
@@ -76,38 +143,14 @@ class UserRepository implements IUsersRepository {
             }
         });
 
-        if (user === null) {
-            return null;
-        }
-
-        return pUserToUser(user);
+        return user;
     }
-}
 
-function pUserToUser(pUser: PrismaUser) {
-    const {
-        id: id,
-        email,
-        password,
-        name,
-        profilePic,
-        evaluationsId,
-        moviesId,
-        createdAt,
-        updatedAt
-    } = pUser;
+    async allUsers(): Promise<User[]> {
+        const users = await database.prismaUser.findMany();
 
-    return new User(
-        id,
-        email,
-        password,
-        name,
-        profilePic,
-        evaluationsId,
-        moviesId,
-        createdAt,
-        updatedAt
-    );
+        return users;
+    }
 }
 
 export { UserRepository };
