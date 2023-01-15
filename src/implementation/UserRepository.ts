@@ -1,52 +1,61 @@
 import { database } from '../app/config/database';
-import { IUsersRepository } from '../repositories';
 import { User } from '../entities';
+import { IUsersRepository } from '../repositories';
 
 class UserRepository implements IUsersRepository {
-    async createUser(
+    async create(
+        userId: string,
         email: string,
         password: string,
         name: string,
         profilePic: string
     ): Promise<User> {
-        const evaluationsId = [] as number[];
-        const moviesId = [] as number[];
+        const evaluationsId = [] as string[];
+        const moviesId = [] as string[];
         const user = await database.prismaUser.create({
-            data: { name, email, password, profilePic, evaluationsId, moviesId }
+            data: {
+                id: userId,
+                name,
+                email,
+                password,
+                profilePic,
+                evaluationsId,
+                moviesId
+            }
         });
         return user;
     }
 
-    async deleteUser(email: string): Promise<void> {
+    async delete(userId: string): Promise<void> {
         await database.prismaUser.delete({
             where: {
-                email
+                id: userId
             }
         });
     }
-    async editUser(
+    async edit(
+        userId: string,
         email: string,
-        newEmail: string,
-        newPassword: string,
-        newName: string,
-        newProfilePic: string
+        password: string,
+        name: string,
+        profilePic: string
     ): Promise<User> {
         const updates: any = {};
-        if (newEmail !== undefined) {
-            updates.email = newEmail;
+        if (email !== undefined) {
+            updates.email = email;
         }
-        if (newPassword !== undefined) {
-            updates.password = newPassword;
+        if (password !== undefined) {
+            updates.password = password;
         }
-        if (newName !== undefined) {
-            updates.name = newName;
+        if (name !== undefined) {
+            updates.name = name;
         }
-        if (newProfilePic !== undefined) {
-            updates.profilePic = newProfilePic;
+        if (profilePic !== undefined) {
+            updates.profilePic = profilePic;
         }
         const userUpdate = await database.prismaUser.update({
             where: {
-                email
+                id: userId
             },
             data: updates
         });
@@ -54,10 +63,10 @@ class UserRepository implements IUsersRepository {
         return userUpdate;
     }
 
-    async addMovie(email: string, movieId: number): Promise<void> {
+    async addMovie(userId: string, movieId: string): Promise<void> {
         const user = await database.prismaUser.findUnique({
             where: {
-                email
+                id: userId
             }
         });
         if (user !== null) {
@@ -65,17 +74,17 @@ class UserRepository implements IUsersRepository {
             moviesId.push(movieId);
             await database.prismaUser.update({
                 where: {
-                    email
+                    id: userId
                 },
                 data: { moviesId }
             });
         }
     }
 
-    async removeMovie(email: string, movieId: number): Promise<void> {
+    async removeMovie(userId: string, movieId: string): Promise<void> {
         const user = await database.prismaUser.findUnique({
             where: {
-                email
+                id: userId
             }
         });
         if (user !== null) {
@@ -83,17 +92,17 @@ class UserRepository implements IUsersRepository {
             moviesId.splice(moviesId.indexOf(movieId), 1);
             await database.prismaUser.update({
                 where: {
-                    email
+                    id: userId
                 },
                 data: { moviesId }
             });
         }
     }
 
-    async addEvaluation(email: string, evaluationId: number): Promise<void> {
+    async addEvaluation(userId: string, evaluationId: string): Promise<void> {
         const user = await database.prismaUser.findUnique({
             where: {
-                email
+                id: userId
             }
         });
         if (user !== null) {
@@ -101,17 +110,20 @@ class UserRepository implements IUsersRepository {
             evaluationsId.push(evaluationId);
             await database.prismaUser.update({
                 where: {
-                    email
+                    id: userId
                 },
                 data: { evaluationsId }
             });
         }
     }
 
-    async removeEvaluation(email: string, evaluationId: number): Promise<void> {
+    async removeEvaluation(
+        userId: string,
+        evaluationId: string
+    ): Promise<void> {
         const user = await database.prismaUser.findUnique({
             where: {
-                email
+                id: userId
             }
         });
         if (user !== null) {
@@ -119,14 +131,14 @@ class UserRepository implements IUsersRepository {
             evaluationsId.splice(evaluationsId.indexOf(evaluationId), 1);
             await database.prismaUser.update({
                 where: {
-                    email
+                    id: userId
                 },
                 data: { evaluationsId }
             });
         }
     }
 
-    async findById(id: number): Promise<User | null> {
+    async findById(id: string): Promise<User | null> {
         const user = await database.prismaUser.findUnique({
             where: {
                 id
@@ -146,7 +158,7 @@ class UserRepository implements IUsersRepository {
         return user;
     }
 
-    async allUsers(): Promise<User[]> {
+    async getAll(): Promise<User[]> {
         const users = await database.prismaUser.findMany();
 
         return users;

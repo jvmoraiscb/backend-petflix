@@ -1,7 +1,7 @@
-import { ITokenHelper } from '../helpers';
+import { ITokenGenerator } from '../providers';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 
-class TokenHelper implements ITokenHelper {
+class TokenGenerator implements ITokenGenerator {
     async createToken(email: string): Promise<string> {
         const token = jwt.sign({ email: email }, process.env.JWT_PASS ?? '', {
             expiresIn: '8h'
@@ -24,4 +24,4 @@ class TokenHelper implements ITokenHelper {
     }
 }
 
-export { TokenHelper };
+export { TokenGenerator };

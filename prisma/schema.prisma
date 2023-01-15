@@ -11,34 +11,37 @@ datasource db {
 }
 
 model PrismaUser {
-  id              Int          @id @default(autoincrement())
-  email           String       @unique
+  id              String    @id
+  email           String    @unique
   password        String
   name            String
   profilePic      String
-  moviesId        Int[]
-  evaluationsId   Int[]
-  createdAt       DateTime     @default(now())
-  updatedAt       DateTime     @updatedAt
+  moviesId        String[]
+  evaluationsId   String[]
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
 }
 
 model PrismaMovie {
-  id            Int          @id @default(autoincrement())
-  imdbId        String       @unique
+  id            String      @id
+  imdbId        String      @unique
   title         String
+  year          Int
+  genre         String
+  plot          String
   poster        String
-  evaluationsId Int[]
-  UsersId       Int[]
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
+  evaluationsId String[]
+  UsersId       String[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 }
 
 model PrismaEvaluation {
-  id            Int      @id @default(autoincrement())
+  id            String      @id
   rating        Int
   comment       String
-  userId        Int
-  movieId       Int
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  userId        String
+  movieId       String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 }

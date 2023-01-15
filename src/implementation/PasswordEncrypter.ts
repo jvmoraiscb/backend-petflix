@@ -1,8 +1,8 @@
-import { IPasswordHelper } from '../helpers';
 import bcrypt from 'bcrypt';
+import { IPasswordEncrypter } from '../providers';
 
-class PasswordHelper implements IPasswordHelper {
-    async hashPassword(password: string): Promise<string> {
+class PasswordEncrypter implements IPasswordEncrypter {
+    async encryptPassword(password: string): Promise<string> {
         return bcrypt.hash(password, 10);
     }
     async verifyPassword(pass1: string, pass2: string): Promise<boolean> {
@@ -10,4 +10,4 @@ class PasswordHelper implements IPasswordHelper {
     }
 }
 
-export { PasswordHelper };
+export { PasswordEncrypter };

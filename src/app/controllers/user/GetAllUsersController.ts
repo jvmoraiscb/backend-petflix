@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { DbAllUsers } from '../../../useCases';
+import { DbGetAllUsers } from '../../../useCases';
 
-class AllUsersController {
-    constructor(private dbCreateUser: DbAllUsers) {
+class GetAllUsersController {
+    constructor(private dbCreateUser: DbGetAllUsers) {
         this.handle = this.handle.bind(this);
     }
 
@@ -18,4 +18,4 @@ class AllUsersController {
     }
 }
 
-export { AllUsersController };
+export { GetAllUsersController };

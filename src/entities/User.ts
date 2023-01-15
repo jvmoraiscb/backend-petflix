@@ -1,11 +1,11 @@
 type User = {
-    id: number;
+    id: string;
     email: string;
     password: string;
     name: string;
     profilePic: string;
-    evaluationsId: number[];
-    moviesId: number[];
+    evaluationsId: string[];
+    moviesId: string[];
     createdAt: Date;
     updatedAt: Date;
 };

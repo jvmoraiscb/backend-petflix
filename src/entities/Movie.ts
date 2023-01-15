@@ -1,7 +1,10 @@
 type Movie = {
     id: number;
-    imdbId: number;
+    imdbId: string;
     title: string;
+    year: number;
+    genre: string;
+    plot: string;
     poster: string;
     evaluationsId: number[];
     usersId: number[];

@@ -1,6 +1,6 @@
-import { IUsersRepository } from '../../repositories';
-import { FindByEmailUserValidation } from '../../validations';
-import { User } from '../../entities';
+import { User } from "../../../entities";
+import { IUsersRepository } from "../../../repositories";
+import { FindByEmailUserValidation } from "../../../validations";
 
 class DbFindByEmailUser {
     constructor(private readonly usersRepository: IUsersRepository) {}
