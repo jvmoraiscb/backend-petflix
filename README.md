@@ -1,5 +1,5 @@
-# petfilmes
+# petflix
 
-Back-end do Pet Filmes
+Back-end do Petflix
 
 npx prisma migrate dev
