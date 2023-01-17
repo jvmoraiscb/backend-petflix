@@ -7,7 +7,7 @@ interface IEvaluationsRepository {
         comment: string,
         userId: string,
         movieId: string
-    ): Promise<Evaluation>;
+    ): Promise<Evaluation | null>;
     delete(evaluationId: string): Promise<void>;
     findById(evaluationId: string): Promise<Evaluation | null>;
 }

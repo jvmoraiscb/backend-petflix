@@ -1,6 +1,6 @@
-import { User } from '../../../entities'
-import { IUsersRepository } from '../../../repositories'
-import { database } from '../../config/database'
+import { User } from '../../../entities';
+import { IUsersRepository } from '../../../repositories';
+import { database } from '../../config/database';
 
 class UserRepository implements IUsersRepository {
     async create(
@@ -16,28 +16,28 @@ class UserRepository implements IUsersRepository {
                 name,
                 email,
                 password,
-                profilePic,
-            },
-        })
+                profilePic
+            }
+        });
         const user = await database.prismaUser.findUnique({
             where: {
-                id: userId,
+                id: userId
             },
             includes: {
                 movies: true,
-                evaluations: true,
-            },
-        })
+                evaluations: true
+            }
+        });
 
-        return user
+        return user;
     }
 
     async delete(userId: string): Promise<void> {
         await database.prismaUser.delete({
             where: {
-                id: userId,
-            },
-        })
+                id: userId
+            }
+        });
     }
     async edit(
         userId: string,
@@ -46,80 +46,92 @@ class UserRepository implements IUsersRepository {
         name: string,
         profilePic: string
     ): Promise<User> {
-        const updates: any = {}
+        const updates: any = {};
         if (email !== undefined) {
-            updates.email = email
+            updates.email = email;
         }
         if (password !== undefined) {
-            updates.password = password
+            updates.password = password;
         }
         if (name !== undefined) {
-            updates.name = name
+            updates.name = name;
         }
         if (profilePic !== undefined) {
-            updates.profilePic = profilePic
+            updates.profilePic = profilePic;
         }
         const userUpdate = await database.prismaUser.update({
             where: {
-                id: userId,
+                id: userId
             },
-            data: updates,
-        })
+            data: updates
+        });
 
-        return userUpdate
+        return userUpdate;
     }
 
     async addMovie(userId: string, movieId: string): Promise<void> {
         const user = await database.prismaUser.findUnique({
             where: {
-                id: userId,
-            },
-        })
+                id: userId
+            }
+        });
         if (user !== null) {
-            const moviesId = user.moviesId
-            moviesId.push(movieId)
             await database.prismaUser.update({
                 where: {
-                    id: userId,
+                    id: userId
                 },
-                data: { moviesId },
-            })
+                data: {
+                    movies: {
+                        connect: {
+                            id: movieId
+                        }
+                    }
+                }
+            });
         }
     }
 
     async removeMovie(userId: string, movieId: string): Promise<void> {
         const user = await database.prismaUser.findUnique({
             where: {
-                id: userId,
-            },
-        })
+                id: userId
+            }
+        });
         if (user !== null) {
-            const moviesId = user.moviesId
-            moviesId.splice(moviesId.indexOf(movieId), 1)
             await database.prismaUser.update({
                 where: {
-                    id: userId,
+                    id: userId
                 },
-                data: { moviesId },
-            })
+                data: {
+                    movies: {
+                        disconnect: {
+                            id: movieId
+                        }
+                    }
+                }
+            });
         }
     }
 
     async addEvaluation(userId: string, evaluationId: string): Promise<void> {
         const user = await database.prismaUser.findUnique({
             where: {
-                id: userId,
-            },
-        })
+                id: userId
+            }
+        });
         if (user !== null) {
-            const evaluationsId = user.evaluationsId
-            evaluationsId.push(evaluationId)
             await database.prismaUser.update({
                 where: {
-                    id: userId,
+                    id: userId
                 },
-                data: { evaluationsId },
-            })
+                data: {
+                    evaluations: {
+                        connect: {
+                            id: evaluationId
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -129,46 +141,50 @@ class UserRepository implements IUsersRepository {
     ): Promise<void> {
         const user = await database.prismaUser.findUnique({
             where: {
-                id: userId,
-            },
-        })
+                id: userId
+            }
+        });
         if (user !== null) {
-            const evaluationsId = user.evaluationsId
-            evaluationsId.splice(evaluationsId.indexOf(evaluationId), 1)
             await database.prismaUser.update({
                 where: {
-                    id: userId,
+                    id: userId
                 },
-                data: { evaluationsId },
-            })
+                data: {
+                    evaluations: {
+                        disconnect: {
+                            id: evaluationId
+                        }
+                    }
+                }
+            });
         }
     }
 
     async findById(id: string): Promise<User | null> {
         const user = await database.prismaUser.findUnique({
             where: {
-                id,
-            },
-        })
+                id
+            }
+        });
 
-        return user
+        return user;
     }
 
     async findByEmail(email: string): Promise<User | null> {
         const user = await database.prismaUser.findUnique({
             where: {
-                email,
-            },
-        })
+                email
+            }
+        });
 
-        return user
+        return user;
     }
 
     async getAll(): Promise<User[]> {
-        const users = await database.prismaUser.findMany()
+        const users = await database.prismaUser.findMany();
 
-        return users
+        return users;
     }
 }
 
-export { UserRepository }
+export { UserRepository };

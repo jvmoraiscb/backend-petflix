@@ -1,10 +1,10 @@
-import { authorizationUser } from '../../helpers'
-import { IIdGenerator, ITokenGenerator } from '../../providers'
+import { authorizationUser } from '../../helpers';
+import { IIdGenerator, ITokenGenerator } from '../../providers';
 import {
     IImdbRepository,
     IMoviesRepositoty,
-    IUsersRepository,
-} from '../../repositories'
+    IUsersRepository
+} from '../../repositories';
 
 class AddMovieUser {
     constructor(
@@ -17,25 +17,25 @@ class AddMovieUser {
 
     async execute(
         headers: {
-            authorization?: string
+            authorization?: string;
         },
         body: {
-            imdbId: string
+            imdbId: string;
         }
     ): Promise<void> {
-        await this.bodyValidator(body)
+        await this.bodyValidator(body);
         const userId = await authorizationUser(
             headers,
             this.tokenGenerator,
             this.usersRepository
-        )
-        const { imdbId } = body
+        );
+        const { imdbId } = body;
 
-        let movie = await this.moviesRepository.findByImdbId(imdbId)
+        let movie = await this.moviesRepository.findByImdbId(imdbId);
         if (movie === null) {
-            const imdbMovie = await this.imdbRepository.findById(imdbId)
+            const imdbMovie = await this.imdbRepository.findById(imdbId);
             if (imdbMovie === null) {
-                throw new Error('invalid imdbId')
+                throw new Error('invalid imdbId');
             }
             const {
                 title,
@@ -47,10 +47,10 @@ class AddMovieUser {
                 poster,
                 director,
                 writer,
-                actors,
-            } = imdbMovie
+                actors
+            } = imdbMovie;
 
-            const id = await this.idGenerator.createId()
+            const id = await this.idGenerator.createId();
 
             movie = await this.moviesRepository.create(
                 id,
@@ -65,21 +65,19 @@ class AddMovieUser {
                 director,
                 writer,
                 actors
-            )
+            );
         }
-        const user = await this.usersRepository.findById(userId)
-        if (user?.moviesId.includes(movie.id)) {
-            throw new Error('movie already added')
+        if (movie === null) {
+            throw new Error('movie not found');
         }
-        await this.moviesRepository.addUser(movie.id, userId)
-        await this.usersRepository.addMovie(userId, movie.id)
+        await this.usersRepository.addMovie(userId, movie.id);
     }
 
     private async bodyValidator(body: any): Promise<void> {
         if (body.imdbId === undefined) {
-            throw new Error('invalid request')
+            throw new Error('invalid request');
         }
     }
 }
 
-export { AddMovieUser }
+export { AddMovieUser };

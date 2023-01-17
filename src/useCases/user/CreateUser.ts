@@ -1,6 +1,6 @@
-import { User } from '../../entities'
-import { IIdGenerator, IPasswordEncrypter } from '../../providers'
-import { IUsersRepository } from '../../repositories'
+import { User } from '../../entities';
+import { IIdGenerator, IPasswordEncrypter } from '../../providers';
+import { IUsersRepository } from '../../repositories';
 
 class CreateUser {
     constructor(
@@ -10,28 +10,32 @@ class CreateUser {
     ) {}
 
     async execute(body: {
-        email: string
-        password: string
-        name: string
-        profilePic: string
+        email: string;
+        password: string;
+        name: string;
+        profilePic: string;
     }): Promise<User> {
-        await this.bodyValidator(body)
-        let { email, password, name, profilePic } = body
-        const userAlreadyExists = await this.usersRepository.findByEmail(email)
+        await this.bodyValidator(body);
+        let { email, password, name, profilePic } = body;
+        const userAlreadyExists = await this.usersRepository.findByEmail(email);
         if (userAlreadyExists !== null) {
-            throw new Error('email already exists')
+            throw new Error('email already exists');
         }
-        password = await this.passwordEncrypter.encryptPassword(password)
+        password = await this.passwordEncrypter.encryptPassword(password);
 
-        const id = await this.idGenerator.createId()
+        const id = await this.idGenerator.createId();
 
-        return await this.usersRepository.create(
+        const user = await this.usersRepository.create(
             id,
             email,
             password,
             name,
             profilePic
-        )
+        );
+        if (user === null) {
+            throw new Error();
+        }
+        return user;
     }
     private async bodyValidator(body: any): Promise<void> {
         if (
@@ -40,9 +44,9 @@ class CreateUser {
             body.name === undefined ||
             body.profilePic === undefined
         ) {
-            throw new Error('invalid request')
+            throw new Error('invalid request');
         }
     }
 }
 
-export { CreateUser }
+export { CreateUser };
