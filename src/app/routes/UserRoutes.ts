@@ -1,62 +1,44 @@
-import { Router } from 'express';
-import {
-    IdGenerator,
-    PasswordEncrypter,
-    TokenGenerator,
-    UserRepository
-} from '../../implementation';
-import {
-    DbCreateUser,
-    DbDeleteUser,
-    DbEditUser,
-    DbFindByEmailUser,
-    DbGetAllUsers,
-    DbLoginUser
-} from '../../useCases';
+import { Router } from 'express'
+import { CreateUser, DeleteUser, EditUser, FindByIdUser, GetAllUsers, LoginUser } from '../../useCases'
 import {
     CreateUserController,
     DeleteUserController,
-    FindByEmailUserController,
-    LoginUserController
-} from '../controllers';
-import { EditUserController } from '../controllers/user/EditUserController';
-import { GetAllUsersController } from '../controllers/user/GetAllUsersController';
+    FindByIdUserController,
+    LoginUserController,
+} from '../controllers'
+import { EditUserController } from '../controllers/user/EditUserController'
+import { GetAllUsersController } from '../controllers/user/GetAllUsersController'
+import { IdGenerator, PasswordEncrypter, TokenGenerator, UserRepository } from '../implementation'
 
-const usersRepository = new UserRepository();
-const passwordEncrypter = new PasswordEncrypter();
-const tokenGenerator = new TokenGenerator();
-const idGenerator = new IdGenerator();
+const usersRepository = new UserRepository()
+const passwordEncrypter = new PasswordEncrypter()
+const tokenGenerator = new TokenGenerator()
+const idGenerator = new IdGenerator()
 
-const dbCreateUser = new DbCreateUser(
+const dbCreateUser = new CreateUser(
     usersRepository,
     passwordEncrypter,
     idGenerator
-);
-const dbFindByEmailUser = new DbFindByEmailUser(usersRepository);
-const dbLoginUser = new DbLoginUser(
+)
+const dbFindByIdUser = new FindByIdUser(usersRepository)
+const dbLoginUser = new LoginUser(
     usersRepository,
     passwordEncrypter,
     tokenGenerator
-);
-const dbEditUser = new DbEditUser(
+)
+const dbEditUser = new EditUser(
     usersRepository,
     passwordEncrypter,
     tokenGenerator
-);
-const dbDeleteUser = new DbDeleteUser(usersRepository, tokenGenerator);
-const dbAllUsers = new DbGetAllUsers(usersRepository);
+)
+const dbDeleteUser = new DeleteUser(usersRepository, tokenGenerator)
+const dbAllUsers = new GetAllUsers(usersRepository)
 
 export const UserRoutes = (router: Router) => {
-    router.get(
-        '/user',
-        new FindByEmailUserController(dbFindByEmailUser).handle
-    );
-    router.post('/user', new CreateUserController(dbCreateUser).handle);
-    router.get('/user/all', new GetAllUsersController(dbAllUsers).handle);
-    router.get('/user/login', new LoginUserController(dbLoginUser).handle);
-    router.put('/user/login/edit', new EditUserController(dbEditUser).handle);
-    router.delete(
-        '/user/login/delete',
-        new DeleteUserController(dbDeleteUser).handle
-    );
-};
+    router.get('/user', new GetAllUsersController(dbAllUsers).handle)
+    router.post('/user', new FindByIdUserController(dbFindByIdUser).handle)
+    router.post('/user/create', new CreateUserController(dbCreateUser).handle)
+    router.post('/user/login', new LoginUserController(dbLoginUser).handle)
+    router.put('/user/edit', new EditUserController(dbEditUser).handle)
+    router.delete('/user/delete', new DeleteUserController(dbDeleteUser).handle)
+}

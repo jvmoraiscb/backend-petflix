@@ -1,5 +1,5 @@
 interface ITokenGenerator {
-    createToken(email: string): Promise<string>;
+    createToken(userId: string): Promise<string>;
     verifyToken(token: string): Promise<string | null>;
 }
 

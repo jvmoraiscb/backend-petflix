@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
     users:
-        container_name: petfilmes
+        container_name: petflix
         image: postgres
         environment:
             - 'POSTGRES_USER=postgres'

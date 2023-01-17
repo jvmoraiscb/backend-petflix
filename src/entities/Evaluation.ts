@@ -1,11 +1,14 @@
-type Evaluation = {
-    id: string;
-    rating: number;
-    comment: string;
-    userId: string;
-    movieId: string;
-    createdAt: Date;
-    updatedAt: Date;
-};
+import { Movie } from './Movie'
+import { User } from './User'
 
-export { Evaluation };
+type Evaluation = {
+    id: string
+    rating: number
+    comment: string
+    user: User
+    movie: Movie
+    createdAt: Date
+    updatedAt: Date
+}
+
+export { Evaluation }

@@ -1,9 +1,9 @@
-type snippetMovie = {
-    imdbId: string;
-    title: string;
-    year: string;
-    type: string;
-    poster: string;
-};
+type SnippetMovie = {
+    imdbId: string
+    title: string
+    year: string
+    type: string
+    poster: string
+}
 
-export { snippetMovie };
+export { SnippetMovie }

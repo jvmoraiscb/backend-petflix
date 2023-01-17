@@ -1,13 +1,16 @@
-type User = {
-    id: string;
-    email: string;
-    password: string;
-    name: string;
-    profilePic: string;
-    evaluationsId: string[];
-    moviesId: string[];
-    createdAt: Date;
-    updatedAt: Date;
-};
+import { Evaluation } from './Evaluation'
+import { Movie } from './Movie'
 
-export { User };
+type User = {
+    id: string
+    email: string
+    password: string
+    name: string
+    profilePic: string
+    evaluations: Evaluation[]
+    movies: Movie[]
+    createdAt: Date
+    updatedAt: Date
+}
+
+export { User }

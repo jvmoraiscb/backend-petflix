@@ -1,4 +1,4 @@
 export * from './CreateUserController';
-export * from './FindByEmailUserController';
+export * from './FindByIdUserController';
 export * from './LoginUserController';
 export * from './DeleteUserController';

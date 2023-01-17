@@ -1,3 +1,6 @@
+import { Evaluation } from "./Evaluation";
+import { User } from "./User";
+
 type Movie = {
     id: string;
     imdbId: string;
@@ -11,10 +14,8 @@ type Movie = {
     director: string;
     writer: string;
     actors: string;
-    metascore: string;
-    imdbRating: string;
-    evaluationsId: string[];
-    usersId: string[];
+    evaluations: Evaluation[];
+    users: User[];
     createdAt: Date;
     updatedAt: Date;
 };

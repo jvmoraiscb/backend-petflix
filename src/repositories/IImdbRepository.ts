@@ -1,15 +1,19 @@
-import { Movie, snippetMovie } from '../entities';
+import { Movie, SnippetMovie } from '../entities'
 
 interface IImdbRepository {
     search(
         query: string,
         page: number
     ): Promise<{
-        movies: snippetMovie[];
-        totalResults: number;
-        response: boolean;
-    }>;
-    findById(imdbId: string): Promise<Movie>;
+        movies: SnippetMovie[]
+        totalResults: number
+    } | null>
+    findById(
+        imdbId: string
+    ): Promise<Omit<
+        Movie,
+        'id' | 'evaluationsId' | 'usersId' | 'createdAt' | 'updatedAt'
+    > | null>
 }
 
-export { IImdbRepository };
+export { IImdbRepository }
