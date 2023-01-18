@@ -1,10 +1,10 @@
 import { Movie } from '../../entities';
-import { IImdbRepository, IMoviesRepositoty } from '../../repositories';
+import { IImdbRepository, IMoviesRepository } from '../../repositories';
 
 class FindByImdbIdMovie {
     constructor(
         private imdbRepository: IImdbRepository,
-        private moviesRepository: IMoviesRepositoty
+        private moviesRepository: IMoviesRepository
     ) {}
 
     async execute(body: {
@@ -13,7 +13,13 @@ class FindByImdbIdMovie {
         | Movie
         | Omit<
               Movie,
-              'id' | 'evaluationsId' | 'usersId' | 'createdAt' | 'updatedAt'
+              | 'id'
+              | 'evaluationsId'
+              | 'usersId'
+              | 'createdAt'
+              | 'updatedAt'
+              | 'evaluations'
+              | 'users'
           >
     > {
         await this.bodyValidator(body);
@@ -22,7 +28,13 @@ class FindByImdbIdMovie {
             | Movie
             | Omit<
                   Movie,
-                  'id' | 'evaluationsId' | 'usersId' | 'createdAt' | 'updatedAt'
+                  | 'id'
+                  | 'evaluationsId'
+                  | 'usersId'
+                  | 'createdAt'
+                  | 'updatedAt'
+                  | 'evaluations'
+                  | 'users'
               >
             | null = await this.moviesRepository.findByImdbId(imdbId);
         if (movie === null) {

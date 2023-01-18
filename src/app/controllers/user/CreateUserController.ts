@@ -9,7 +9,7 @@ class CreateUserController {
     async handle(request: Request, response: Response): Promise<Response> {
         try {
             const user = await this.dbCreateUser.execute(request.body)
-            return response.status(201).send({ user })
+            return response.status(201).send(user)
         } catch (err: any) {
             return response.status(400).json({
                 message: err.message || 'Unexpected Error!',

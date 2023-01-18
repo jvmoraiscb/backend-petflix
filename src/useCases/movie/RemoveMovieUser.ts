@@ -1,11 +1,11 @@
 import { authorizationUser } from '../../helpers';
 import { ITokenGenerator } from '../../providers';
-import { IMoviesRepositoty, IUsersRepository } from '../../repositories';
+import { IMoviesRepository, IUsersRepository } from '../../repositories';
 
 class RemoveMovieUser {
     constructor(
         private usersRepository: IUsersRepository,
-        private moviesRepository: IMoviesRepositoty,
+        private moviesRepository: IMoviesRepository,
         private tokenGenerator: ITokenGenerator
     ) {}
 
