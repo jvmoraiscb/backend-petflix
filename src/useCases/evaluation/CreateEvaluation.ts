@@ -2,14 +2,14 @@ import { authorizationUser } from '../../helpers';
 import { IIdGenerator, ITokenGenerator } from '../../providers';
 import {
     IEvaluationsRepository,
-    IMoviesRepositoty,
+    IMoviesRepository,
     IUsersRepository
 } from '../../repositories';
 
 class CreateEvaluation {
     constructor(
         private usersRepository: IUsersRepository,
-        private moviesRepository: IMoviesRepositoty,
+        private moviesRepository: IMoviesRepository,
         private evaluationsRepository: IEvaluationsRepository,
         private tokenGenerator: ITokenGenerator,
         private idGenerator: IIdGenerator

@@ -1,8 +1,8 @@
 import { Movie } from '../../entities'
-import { IMoviesRepositoty } from '../../repositories'
+import { IMoviesRepository } from '../../repositories'
 
 class FindByIdMovie {
-    constructor(private moviesRepository: IMoviesRepositoty) {}
+    constructor(private moviesRepository: IMoviesRepository) {}
 
     async execute(body: { id: string }): Promise<Movie> {
         await this.bodyValidator(body)

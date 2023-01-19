@@ -1,8 +1,8 @@
 import { Movie } from '../../../entities';
-import { IMoviesRepositoty } from '../../../repositories';
+import { IMoviesRepository } from '../../../repositories';
 import { database } from '../../config/database';
 
-class MovieRepository implements IMoviesRepositoty {
+class MoviesRepository implements IMoviesRepository {
     async create(
         movieId: string,
         imdbId: string,
@@ -73,6 +73,17 @@ class MovieRepository implements IMoviesRepositoty {
             }
         });
     }
+
+    async getAll(): Promise<Movie[]> {
+        const movies = await database.prismaMovie.findMany({
+            include: {
+                users: true,
+                evaluations: true
+            }
+        });
+
+        return movies;
+    }
 }
 
-export { MovieRepository };
+export { MoviesRepository };

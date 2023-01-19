@@ -1,3 +1,4 @@
-export * from './UserRepository';
-export * from './MoviesRepository';
-export * from './EvaluationsRepository';
+export * from './UserRepository'
+export * from './MoviesRepository'
+export * from './ImdbRepository'
+export * from './EvaluationsRepository'

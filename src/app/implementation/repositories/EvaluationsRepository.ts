@@ -47,6 +47,17 @@ class EvaluationsRepository implements IEvaluationsRepository {
             }
         });
     }
+
+    async getAll(): Promise<Evaluation[]> {
+        const evaluations = await database.prismaEvaluation.findMany({
+            include: {
+                user: true,
+                movie: true
+            }
+        });
+
+        return evaluations;
+    }
 }
 
 export { EvaluationsRepository };

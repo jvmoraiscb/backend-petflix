@@ -23,7 +23,7 @@ class UserRepository implements IUsersRepository {
             where: {
                 id: userId
             },
-            includes: {
+            include: {
                 movies: true,
                 evaluations: true
             }
@@ -164,6 +164,10 @@ class UserRepository implements IUsersRepository {
         const user = await database.prismaUser.findUnique({
             where: {
                 id
+            },
+            include: {
+                movies: true,
+                evaluations: true
             }
         });
 
@@ -174,6 +178,10 @@ class UserRepository implements IUsersRepository {
         const user = await database.prismaUser.findUnique({
             where: {
                 email
+            },
+            include: {
+                movies: true,
+                evaluations: true
             }
         });
 
@@ -181,7 +189,12 @@ class UserRepository implements IUsersRepository {
     }
 
     async getAll(): Promise<User[]> {
-        const users = await database.prismaUser.findMany();
+        const users = await database.prismaUser.findMany({
+            include: {
+                movies: true,
+                evaluations: true
+            }
+        });
 
         return users;
     }

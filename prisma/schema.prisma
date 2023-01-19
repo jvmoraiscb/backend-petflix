@@ -23,32 +23,32 @@ model PrismaUser {
 }
 
 model PrismaMovie {
-  id          String             @id
-  imdbId      String             @unique
-  title       String
-  type        String
-  runtime     String
-  year        String
-  genre       String
-  plot        String
-  poster      String
-  director    String
-  writer      String
-  actors      String
-  evaluations PrismaEvaluation[]
-  users       PrismaUser[]
-  createdAt   DateTime           @default(now())
-  updatedAt   DateTime           @updatedAt
+  id            String      @id
+  imdbId        String      @unique
+  title         String
+  type          String
+  runtime       String
+  year          String
+  genre         String
+  plot          String
+  poster        String
+  director      String
+  writer        String
+  actors        String
+  evaluations   PrismaEvaluation[]
+  users         PrismaUser[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 }
 
 model PrismaEvaluation {
-  id        String       @id
-  rating    Int
-  comment   String
-  user      PrismaUser?  @relation(fields: [userId], references: [id])
-  userId    String?
-  movie     PrismaMovie? @relation(fields: [movieId], references: [id])
-  movieId   String?
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
+  id            String      @id
+  rating        Int
+  comment       String
+  user          PrismaUser?    @relation(fields: [userId], references: [id])
+  userId        String?
+  movie         PrismaMovie?   @relation(fields: [movieId], references: [id])
+  movieId       String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 }

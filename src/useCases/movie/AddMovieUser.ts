@@ -2,14 +2,14 @@ import { authorizationUser } from '../../helpers';
 import { IIdGenerator, ITokenGenerator } from '../../providers';
 import {
     IImdbRepository,
-    IMoviesRepositoty,
+    IMoviesRepository,
     IUsersRepository
 } from '../../repositories';
 
 class AddMovieUser {
     constructor(
         private usersRepository: IUsersRepository,
-        private moviesRepository: IMoviesRepositoty,
+        private moviesRepository: IMoviesRepository,
         private imdbRepository: IImdbRepository,
         private tokenGenerator: ITokenGenerator,
         private idGenerator: IIdGenerator
@@ -68,7 +68,7 @@ class AddMovieUser {
             );
         }
         if (movie === null) {
-            throw new Error('movie not found');
+            throw new Error();
         }
         await this.usersRepository.addMovie(userId, movie.id);
     }

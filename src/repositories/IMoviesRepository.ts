@@ -1,6 +1,6 @@
 import { Movie } from '../entities';
 
-interface IMoviesRepositoty {
+interface IMoviesRepository {
     create(
         movieId: string,
         imdbId: string,
@@ -18,6 +18,7 @@ interface IMoviesRepositoty {
     delete(movieId: string): Promise<void>;
     findById(movieId: string): Promise<Movie | null>;
     findByImdbId(imdbId: string): Promise<Movie | null>;
+    getAll(): Promise<Movie[]>;
 }
 
-export { IMoviesRepositoty };
+export { IMoviesRepository };
