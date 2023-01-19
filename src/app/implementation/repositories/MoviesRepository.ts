@@ -33,7 +33,7 @@ class MovieRepository implements IMoviesRepositoty {
                 actors
             },
             include: {
-                Users: true,
+                users: true,
                 evaluations: true
             }
         });
@@ -47,7 +47,7 @@ class MovieRepository implements IMoviesRepositoty {
             },
             include: {
                 evaluations: true,
-                Users: true
+                users: true
             }
         });
         return movie;
@@ -59,7 +59,7 @@ class MovieRepository implements IMoviesRepositoty {
                 id: movieId
             },
             include: {
-                Users: true,
+                users: true,
                 evaluations: true
             }
         });
