@@ -10,23 +10,30 @@ class EvaluationsRepository implements IEvaluationsRepository {
         userId: string,
         movieId: string
     ): Promise<Evaluation | null> {
-        await database.prismaEvaluation.create({
+        const evaluation = await database.prismaEvaluation.create({
             data: {
                 id: evaluationId,
-                rating,
-                comment,
-                userId,
-                movieId
+                rating: rating,
+                comment: comment,
+                userId: userId,
+                movieId: movieId
+            },
+            include: {
+                user: true,
+                movie: true
             }
         });
+        return evaluation;
+    }
 
+    async findById(evaluationId: string): Promise<Evaluation | null> {
         const evaluation = await database.prismaEvaluation.findUnique({
             where: {
                 id: evaluationId
             },
             include: {
-                user: true,
-                movie: true
+                movie: true,
+                user: true
             }
         });
 
@@ -39,20 +46,6 @@ class EvaluationsRepository implements IEvaluationsRepository {
                 id: evaluationId
             }
         });
-    }
-
-    async findById(evaluationId: string): Promise<Evaluation | null> {
-        const evaluation = await database.prismaEvaluation.findUnique({
-            where: {
-                id: evaluationId
-            },
-            include: {
-                user: true,
-                movie: true
-            }
-        });
-
-        return evaluation;
     }
 
     async getAll(): Promise<Evaluation[]> {

@@ -17,7 +17,7 @@ class MoviesRepository implements IMoviesRepository {
         writer: string,
         actors: string
     ): Promise<Movie | null> {
-        await database.prismaMovie.create({
+        const movie = await database.prismaMovie.create({
             data: {
                 id: movieId,
                 imdbId,
@@ -31,8 +31,29 @@ class MoviesRepository implements IMoviesRepository {
                 director,
                 writer,
                 actors
+            },
+            include: {
+                users: true,
+                evaluations: true
             }
         });
+        return movie;
+    }
+
+    async findByImdbId(imdbId: string): Promise<Movie | null> {
+        const movie = await database.prismaMovie.findUnique({
+            where: {
+                imdbId: imdbId
+            },
+            include: {
+                evaluations: true,
+                users: true
+            }
+        });
+        return movie;
+    }
+
+    async findById(movieId: string): Promise<Movie | null> {
         const movie = await database.prismaMovie.findUnique({
             where: {
                 id: movieId
@@ -42,7 +63,6 @@ class MoviesRepository implements IMoviesRepository {
                 evaluations: true
             }
         });
-
         return movie;
     }
 
@@ -52,34 +72,6 @@ class MoviesRepository implements IMoviesRepository {
                 id: movieId
             }
         });
-    }
-
-    async findById(id: string): Promise<Movie | null> {
-        const movie = await database.prismaMovie.findUnique({
-            where: {
-                id
-            },
-            include: {
-                users: true,
-                evaluations: true
-            }
-        });
-
-        return movie;
-    }
-
-    async findByImdbId(imdbId: string): Promise<Movie | null> {
-        const movie = await database.prismaMovie.findUnique({
-            where: {
-                imdbId
-            },
-            include: {
-                users: true,
-                evaluations: true
-            }
-        });
-
-        return movie;
     }
 
     async getAll(): Promise<Movie[]> {
