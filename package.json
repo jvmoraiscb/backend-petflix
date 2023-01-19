@@ -7,7 +7,7 @@
     "scripts": {
         "start": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules ./src/server.ts",
         "data": "sudo docker-compose up",
-        "restartData": "npx prisma migrate dev"
+        "dataRestart": "npx prisma migrate dev"
     },
     "dependencies": {
         "@prisma/client": "4.5.0",
