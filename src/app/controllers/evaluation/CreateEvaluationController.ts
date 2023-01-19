@@ -1,14 +1,17 @@
 import { Request, Response } from 'express';
-import { AddMovieUser } from '../../../useCases';
+import { CreateEvaluation } from '../../../useCases';
 
-class AddMovieUserController {
-    constructor(private dbAddMovieUser: AddMovieUser) {
+class CreateEvaluationUserController {
+    constructor(private dbcreateEvaluationUser: CreateEvaluation) {
         this.handle = this.handle.bind(this);
     }
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            await this.dbAddMovieUser.execute(request.headers, request.body);
+            await this.dbcreateEvaluationUser.execute(
+                request.headers,
+                request.body
+            );
             return response.status(201).send();
         } catch (err: any) {
             return response.status(400).json({
@@ -18,4 +21,4 @@ class AddMovieUserController {
     }
 }
 
-export { AddMovieUserController };
+export { CreateEvaluationUserController };

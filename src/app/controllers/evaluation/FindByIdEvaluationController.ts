@@ -1,15 +1,15 @@
 import { Request, Response } from 'express';
-import { AddMovieUser } from '../../../useCases';
+import { FindByIdEvaluation } from '../../../useCases';
 
-class AddMovieUserController {
-    constructor(private dbAddMovieUser: AddMovieUser) {
+class FindByIdEvaluationController {
+    constructor(private dbFindByIdEvaluation: FindByIdEvaluation) {
         this.handle = this.handle.bind(this);
     }
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            await this.dbAddMovieUser.execute(request.headers, request.body);
-            return response.status(201).send();
+            const res = await this.dbFindByIdEvaluation.execute(request.body);
+            return response.status(201).send(res);
         } catch (err: any) {
             return response.status(400).json({
                 message: err.message || 'Unexpected Error!'
@@ -18,4 +18,4 @@ class AddMovieUserController {
     }
 }
 
-export { AddMovieUserController };
+export { FindByIdEvaluationController };

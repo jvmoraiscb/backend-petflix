@@ -2,7 +2,7 @@ import { User } from '../../../entities';
 import { IUsersRepository } from '../../../repositories';
 import { database } from '../../config/database';
 
-class UserRepository implements IUsersRepository {
+class UsersRepository implements IUsersRepository {
     async create(
         userId: string,
         email: string,
@@ -25,7 +25,11 @@ class UserRepository implements IUsersRepository {
             },
             include: {
                 movies: true,
-                evaluations: true
+                evaluations: {
+                    include: {
+                        movie: true
+                    }
+                }
             }
         });
 
@@ -167,7 +171,11 @@ class UserRepository implements IUsersRepository {
             },
             include: {
                 movies: true,
-                evaluations: true
+                evaluations: {
+                    include: {
+                        movie: true
+                    }
+                }
             }
         });
 
@@ -181,7 +189,11 @@ class UserRepository implements IUsersRepository {
             },
             include: {
                 movies: true,
-                evaluations: true
+                evaluations: {
+                    include: {
+                        movie: true
+                    }
+                }
             }
         });
 
@@ -192,7 +204,11 @@ class UserRepository implements IUsersRepository {
         const users = await database.prismaUser.findMany({
             include: {
                 movies: true,
-                evaluations: true
+                evaluations: {
+                    include: {
+                        movie: true
+                    }
+                }
             }
         });
 
@@ -200,4 +216,4 @@ class UserRepository implements IUsersRepository {
     }
 }
 
-export { UserRepository };
+export { UsersRepository };

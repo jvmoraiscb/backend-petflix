@@ -1,11 +1,12 @@
-import { Express, Router } from 'express'
-import { MovieRoutes, UserRoutes } from '../routes'
+import { Express, Router } from 'express';
+import { EvaluationRoutes, MovieRoutes, UserRoutes } from '../routes';
 
 const routes = (app: Express) => {
-    const router = Router()
-    app.use('/api', router)
-    UserRoutes(router)
-    MovieRoutes(router)
-}
+    const router = Router();
+    app.use('/api', router);
+    UserRoutes(router);
+    MovieRoutes(router);
+    EvaluationRoutes(router);
+};
 
-export { routes }
+export { routes };

@@ -20,13 +20,13 @@ import {
     ImdbRepository,
     MoviesRepository,
     TokenGenerator,
-    UserRepository
+    UsersRepository
 } from '../implementation';
 
 const tokenGenerator = new TokenGenerator();
 const idGenerator = new IdGenerator();
 
-const userRepository = new UserRepository();
+const usersRepository = new UsersRepository();
 const imdbRepository = new ImdbRepository();
 const moviesRepository = new MoviesRepository();
 
@@ -38,14 +38,14 @@ const dbFindByImdbIdMovie = new FindByImdbIdMovie(
     moviesRepository
 );
 const dbAddMovieUser = new AddMovieUser(
-    userRepository,
+    usersRepository,
     moviesRepository,
     imdbRepository,
     tokenGenerator,
     idGenerator
 );
 const dbRemoveMovieUser = new RemoveMovieUser(
-    userRepository,
+    usersRepository,
     moviesRepository,
     tokenGenerator
 );
