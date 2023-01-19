@@ -58,6 +58,10 @@ class MoviesRepository implements IMoviesRepository {
         const movie = await database.prismaMovie.findUnique({
             where: {
                 id
+            },
+            include: {
+                users: true,
+                evaluations: true
             }
         });
 
@@ -68,16 +72,10 @@ class MoviesRepository implements IMoviesRepository {
         const movie = await database.prismaMovie.findUnique({
             where: {
                 imdbId
-            }
-        });
-
-        return movie;
-    }
-
-    async findByEmail(email: string): Promise<Movie | null> {
-        const movie = await database.prismaMovie.findUnique({
-            where: {
-                email
+            },
+            include: {
+                users: true,
+                evaluations: true
             }
         });
 
@@ -85,7 +83,12 @@ class MoviesRepository implements IMoviesRepository {
     }
 
     async getAll(): Promise<Movie[]> {
-        const movies = await database.prismaUser.findMany();
+        const movies = await database.prismaMovie.findMany({
+            include: {
+                users: true,
+                evaluations: true
+            }
+        });
 
         return movies;
     }

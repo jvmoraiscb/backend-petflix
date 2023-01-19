@@ -36,7 +36,7 @@ model PrismaMovie {
   writer        String
   actors        String
   evaluations   PrismaEvaluation[]
-  Users         PrismaUser[]
+  users         PrismaUser[]
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
 }

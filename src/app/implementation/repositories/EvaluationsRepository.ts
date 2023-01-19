@@ -45,6 +45,10 @@ class EvaluationsRepository implements IEvaluationsRepository {
         const evaluation = await database.prismaEvaluation.findUnique({
             where: {
                 id: evaluationId
+            },
+            include: {
+                user: true,
+                movie: true
             }
         });
 
@@ -52,7 +56,12 @@ class EvaluationsRepository implements IEvaluationsRepository {
     }
 
     async getAll(): Promise<Evaluation[]> {
-        const evaluations = await database.prismaEvaluation.findMany();
+        const evaluations = await database.prismaEvaluation.findMany({
+            include: {
+                user: true,
+                movie: true
+            }
+        });
 
         return evaluations;
     }
