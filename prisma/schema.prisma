@@ -11,15 +11,15 @@ datasource db {
 }
 
 model PrismaUser {
-  id              String    @id
-  email           String    @unique
-  password        String
-  name            String
-  profilePic      String
-  movies          PrismaMovie[]
-  evaluations     PrismaEvaluation[]
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  id          String             @id
+  email       String             @unique
+  password    String
+  name        String
+  profilePic  String
+  movies      PrismaMovie[]
+  evaluations PrismaEvaluation[]
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
 }
 
 model PrismaMovie {

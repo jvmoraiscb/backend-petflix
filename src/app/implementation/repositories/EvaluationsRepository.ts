@@ -59,3 +59,5 @@ class EvaluationsRepository implements IEvaluationsRepository {
         return evaluations;
     }
 }
+
+export { EvaluationsRepository };
