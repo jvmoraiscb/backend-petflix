@@ -19,8 +19,8 @@ class EvaluationsRepository implements IEvaluationsRepository {
                 movieId: movieId
             },
             include: {
-                User: true,
-                Movie: true
+                user: true,
+                movie: true
             }
         });
         return evaluation;
@@ -32,8 +32,8 @@ class EvaluationsRepository implements IEvaluationsRepository {
                 id: evaluationId
             },
             include: {
-                Movie: true,
-                User: true
+                movie: true,
+                user: true
             }
         });
 
