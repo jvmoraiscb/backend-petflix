@@ -1,5 +1,6 @@
 import { Express, Router } from 'express';
 import { EvaluationRoutes, MovieRoutes, UserRoutes } from '../routes';
+import { TrendingRoutes } from '../routes/TrendingRoutes';
 
 const routes = (app: Express) => {
     const router = Router();
@@ -7,6 +8,7 @@ const routes = (app: Express) => {
     UserRoutes(router);
     MovieRoutes(router);
     EvaluationRoutes(router);
+    TrendingRoutes(router);
 };
 
 export { routes };
