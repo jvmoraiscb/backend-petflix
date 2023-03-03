@@ -2,12 +2,13 @@ import { Evaluation, MovieType } from '@prisma/client';
 import { number, object, string } from 'yup';
 import { IIdGenerator } from '../../providers';
 import { IEvaluationRepository, IMovieRepository } from '../../repositories';
+import { movieType } from '../../app/config/movieType';
 
 let bodySchema = object({
     rating: number().required().max(5).min(0).integer(),
     comment: string().required().min(1),
     imdbId: string().required(),
-    stream: string().required().uppercase()
+    stream: string().required().uppercase().oneOf(movieType)
 });
 
 class CreateEvaluation {

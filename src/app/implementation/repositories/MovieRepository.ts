@@ -33,7 +33,8 @@ class MovieRepository implements IMovieRepository {
                     include: {
                         user: {
                             select: {
-                                name: true
+                                name: true,
+                                profilePic: true
                             }
                         }
                     }
@@ -59,7 +60,8 @@ class MovieRepository implements IMovieRepository {
                     include: {
                         user: {
                             select: {
-                                name: true
+                                name: true,
+                                profilePic: true
                             }
                         }
                     }
@@ -85,7 +87,8 @@ class MovieRepository implements IMovieRepository {
                     include: {
                         user: {
                             select: {
-                                name: true
+                                name: true,
+                                profilePic: true
                             }
                         }
                     }
@@ -115,7 +118,8 @@ class MovieRepository implements IMovieRepository {
                     include: {
                         user: {
                             select: {
-                                name: true
+                                name: true,
+                                profilePic: true
                             }
                         }
                     }

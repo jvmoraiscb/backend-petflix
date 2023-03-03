@@ -4,7 +4,7 @@ import { IIdGenerator, IPasswordEncrypter } from '../../providers';
 import { IUserRepository } from '../../repositories';
 
 const bodySchema = object({
-    email: string().email().required(),
+    email: string().email().required().min(1),
     password: string().required().min(1),
     name: string().required().min(1),
     profilePic: number().integer().positive().required()
