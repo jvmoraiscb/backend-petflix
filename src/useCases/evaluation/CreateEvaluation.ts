@@ -1,66 +1,58 @@
-import { authorizationUser } from '../../helpers';
-import { IIdGenerator, ITokenGenerator } from '../../providers';
-import {
-    IEvaluationsRepository,
-    IMoviesRepository,
-    IUsersRepository
-} from '../../repositories';
+import { Evaluation, MovieType } from '@prisma/client';
+import { number, object, string } from 'yup';
+import { IIdGenerator } from '../../providers';
+import { IEvaluationRepository, IMovieRepository } from '../../repositories';
+
+let bodySchema = object({
+    rating: number().required().max(5).min(0).integer(),
+    comment: string().required().min(1),
+    imdbId: string().required(),
+    stream: string().required().uppercase()
+});
 
 class CreateEvaluation {
     constructor(
-        private usersRepository: IUsersRepository,
-        private moviesRepository: IMoviesRepository,
-        private evaluationsRepository: IEvaluationsRepository,
-        private tokenGenerator: ITokenGenerator,
+        private evaluationRepository: IEvaluationRepository,
+        private movieRepository: IMovieRepository,
         private idGenerator: IIdGenerator
     ) {}
 
-    async execute(
-        headers: {
-            authorization?: string;
-        },
-        body: {
-            movieId: string;
-            rating: number;
-            comment: string;
-        }
-    ): Promise<void> {
-        await this.bodyValidator(body);
-        const userId = await authorizationUser(
-            headers,
-            this.tokenGenerator,
-            this.usersRepository
-        );
-        const { movieId, rating, comment } = body;
+    async execute(userId: string, body: any): Promise<Evaluation> {
+        body = await bodySchema.validate(body);
+        const { imdbId, rating, comment, stream } = body;
 
-        const movie = await this.moviesRepository.findById(movieId);
-        if (movie === null) {
-            throw new Error('invalid movieId');
+        const movieExists = await this.movieRepository.findByImdbId(imdbId);
+
+        if (!movieExists) {
+            throw new Error('movie does not exists in database');
+        }
+
+        if (movieExists.movieType === MovieType.SUGGESTED) {
+            throw new Error(
+                'movie does not possible to evaluate (wait for movie to be watched).'
+            );
+        }
+
+        if (
+            await this.evaluationRepository.userAlreadyEvaluatedMovie(
+                userId,
+                imdbId
+            )
+        ) {
+            throw new Error('user already evaluated movie');
         }
 
         const id = await this.idGenerator.createId();
-        const evaluation = await this.evaluationsRepository.create(
+        const newEvaluation = {
             id,
             rating,
             comment,
+            stream,
             userId,
-            movieId
-        );
-        if (evaluation === null) {
-            throw new Error();
-        }
+            imdbId
+        };
 
-        await this.usersRepository.addEvaluation(userId, id);
-    }
-
-    private async bodyValidator(body: any): Promise<void> {
-        if (
-            body.movieId === undefined ||
-            body.rating === undefined ||
-            body.comment === undefined
-        ) {
-            throw new Error('invalid request');
-        }
+        return await this.evaluationRepository.create(newEvaluation);
     }
 }
 

@@ -1,1 +1,1 @@
-export * from './authorizationUser'
+export * from './tokenToId';

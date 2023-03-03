@@ -1,21 +1,11 @@
-import { authorizationUser } from '../../helpers'
-import { ITokenGenerator } from '../../providers'
-import { IUsersRepository } from '../../repositories'
+import { IUserRepository } from '../../repositories';
 
 class DeleteUser {
-    constructor(
-        private usersRepository: IUsersRepository,
-        private tokenGenerator: ITokenGenerator
-    ) {}
+    constructor(private userRepository: IUserRepository) {}
 
-    async execute(headers: { authorization?: string }): Promise<void> {
-        const id = await authorizationUser(
-            headers,
-            this.tokenGenerator,
-            this.usersRepository
-        )
-        await this.usersRepository.delete(id)
+    async execute(userId: string): Promise<void> {
+        await this.userRepository.delete(userId);
     }
 }
 
-export { DeleteUser }
+export { DeleteUser };

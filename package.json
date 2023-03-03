@@ -1,22 +1,29 @@
 {
-    "name": "petfilmes",
+    "name": "petflix",
     "version": "1.0.0",
     "description": "Site de filmes para o PetEngComp",
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "start": "ts-node-dev --transpile-only --respawn --ignore-watch node_modules ./src/server.ts",
-        "data": "sudo docker-compose up",
-        "dataRestart": "npx prisma migrate dev"
+        "start:dev": "tsnd --transpile-only --respawn --exit-child --quiet --ignore-watch node_modules ./src/server.ts",
+        "start:prod": "prisma migrate deploy && node build/server.js",
+        "build": "tsc --build",
+        "start:docker": "sudo docker compose up -d",
+        "stop:docker": "sudo docker compose down",
+        "docker:database": "sudo docker compose up -d databse",
+        "migrate:dev": "prisma migrate dev",
+        "migrate:deploy": "prisma migrate deploy",
+        "prisma:generate": "prisma generate",
+        "prisma:pull": "prisma db push"
     },
     "dependencies": {
         "@prisma/client": "4.5.0",
         "axios": "^1.2.2",
         "bcrypt": "^5.1.0",
         "express": "^4.18.2",
+        "jsonfile": "^6.1.0",
         "jsonwebtoken": "^9.0.0",
         "prisma": "^4.5.0",
-        "ts-node-dev": "^2.0.0",
         "uuid": "^9.0.0",
         "yup": "^0.32.11"
     },
@@ -25,8 +32,10 @@
         "@types/bcrypt": "^5.0.0",
         "@types/express": "^4.17.14",
         "@types/jest": "^29.2.2",
+        "@types/jsonfile": "^6.1.1",
         "@types/jsonwebtoken": "^9.0.1",
         "@types/node": "^18.11.9",
+        "ts-node-dev": "^2.0.0",
         "@types/uuid": "^9.0.0",
         "ts-node": "^10.9.1",
         "typescript": "^4.8.4"

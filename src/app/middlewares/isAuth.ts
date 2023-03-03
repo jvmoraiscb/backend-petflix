@@ -1,28 +1,21 @@
 import { NextFunction, Request, Response } from 'express';
-import { authorizationUser } from '../../helpers';
-import { TokenGenerator, UsersRepository } from '../implementation';
-
-const tokenGenerator = new TokenGenerator();
-const usersRepository = new UsersRepository();
+import { tokenToId } from '../../helpers';
 
 const isAuthMiddleware = async (
     request: Request,
     response: Response,
     next: NextFunction
 ): Promise<any> => {
-    try {
-        await authorizationUser(
-            request.headers,
-            tokenGenerator,
-            usersRepository
-        );
-        next();
-    } catch (err: any) {
-        return response.status(501).json({
-            message: err.message,
-            status: 501
-        });
+    const { authorization } = request.headers;
+    if (!authorization) {
+        return response.status(401).json({ error: 'Permission denied.' });
     }
+    const id = await tokenToId(authorization);
+    if (!id) {
+        return response.status(401).json({ error: 'Permission denied.' });
+    }
+    request.userId = id;
+    next();
 };
 
 export { isAuthMiddleware };

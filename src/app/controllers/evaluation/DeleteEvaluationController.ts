@@ -1,18 +1,14 @@
 import { Request, Response } from 'express';
 import { DeleteEvaluation } from '../../../useCases';
 
-class DeleteEvaluationUserController {
-    constructor(private dbdeleteEvaluationUser: DeleteEvaluation) {
+class DeleteEvaluationController {
+    constructor(private deleteEvaluation: DeleteEvaluation) {
         this.handle = this.handle.bind(this);
     }
-
-    async handle(request: Request, response: Response): Promise<Response> {
+    async handle(request: Request, response: Response) {
         try {
-            await this.dbdeleteEvaluationUser.execute(
-                request.headers,
-                request.body
-            );
-            return response.status(201).send();
+            await this.deleteEvaluation.execute(request.userId, request.body);
+            return response.status(202).send();
         } catch (err: any) {
             return response.status(400).json({
                 message: err.message || 'Unexpected Error!'
@@ -21,4 +17,4 @@ class DeleteEvaluationUserController {
     }
 }
 
-export { DeleteEvaluationUserController };
+export { DeleteEvaluationController };

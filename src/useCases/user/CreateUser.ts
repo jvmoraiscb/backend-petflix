@@ -1,51 +1,40 @@
-import { User } from '../../entities';
+import { User } from '@prisma/client';
+import { number, object, string } from 'yup';
 import { IIdGenerator, IPasswordEncrypter } from '../../providers';
-import { IUsersRepository } from '../../repositories';
+import { IUserRepository } from '../../repositories';
+
+const bodySchema = object({
+    email: string().email().required(),
+    password: string().required().min(1),
+    name: string().required().min(1),
+    profilePic: number().integer().positive().required()
+});
 
 class CreateUser {
     constructor(
-        private usersRepository: IUsersRepository,
+        private usersRepository: IUserRepository,
         private passwordEncrypter: IPasswordEncrypter,
         private idGenerator: IIdGenerator
     ) {}
 
-    async execute(body: {
-        email: string;
-        password: string;
-        name: string;
-        profilePic: string;
-    }): Promise<User> {
-        await this.bodyValidator(body);
+    async execute(body: any): Promise<User> {
+        body = await bodySchema.validate(body);
         let { email, password, name, profilePic } = body;
+
         const userAlreadyExists = await this.usersRepository.findByEmail(email);
         if (userAlreadyExists !== null) {
-            throw new Error('email already exists');
+            throw new Error('email already in use');
         }
         password = await this.passwordEncrypter.encryptPassword(password);
-
         const id = await this.idGenerator.createId();
-
-        const user = await this.usersRepository.create(
+        const user = await this.usersRepository.create({
             id,
             email,
             password,
             name,
             profilePic
-        );
-        if (user === null) {
-            throw new Error();
-        }
+        });
         return user;
-    }
-    private async bodyValidator(body: any): Promise<void> {
-        if (
-            body.email === undefined ||
-            body.password === undefined ||
-            body.name === undefined ||
-            body.profilePic === undefined
-        ) {
-            throw new Error('invalid request');
-        }
     }
 }
 

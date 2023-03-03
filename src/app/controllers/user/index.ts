@@ -1,4 +1,5 @@
+export * from './GetUserController';
 export * from './CreateUserController';
-export * from './FindByIdUserController';
-export * from './LoginUserController';
+export * from './UpdateUserController';
 export * from './DeleteUserController';
+export * from './LoginUserController';

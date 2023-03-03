@@ -1,43 +1,26 @@
-import { authorizationUser } from '../../helpers';
-import { ITokenGenerator } from '../../providers';
-import { IEvaluationsRepository, IUsersRepository } from '../../repositories';
+import { object, string } from 'yup';
+import { IEvaluationRepository } from '../../repositories';
+
+let bodySchema = object({
+    id: string().required()
+});
 
 class DeleteEvaluation {
-    constructor(
-        private usersRepository: IUsersRepository,
-        private evaluationsRepository: IEvaluationsRepository,
-        private tokenGenerator: ITokenGenerator
-    ) {}
+    constructor(private evaluationRepository: IEvaluationRepository) {}
 
-    async execute(
-        headers: {
-            authorization?: string;
-        },
-        body: {
-            id: string;
-        }
-    ): Promise<void> {
-        await this.bodyValidator(body);
-        const userId = await authorizationUser(
-            headers,
-            this.tokenGenerator,
-            this.usersRepository
-        );
+    async execute(userId: string, body: any): Promise<void> {
+        body = await bodySchema.validate(body);
         const { id } = body;
 
-        const evaluation = await this.evaluationsRepository.findById(id);
-        if (evaluation === null) {
-            throw new Error('invalid id');
+        if (await this.evaluationRepository.userEvaluatedById(id, userId)) {
+            throw new Error('evaluate does not exists');
         }
 
-        await this.usersRepository.removeEvaluation(userId, id);
-        await this.evaluationsRepository.delete(id);
-    }
-
-    private async bodyValidator(body: any): Promise<void> {
-        if (body.id === undefined) {
-            throw new Error('invalid request');
+        if (!id) {
+            throw new Error('Invalid request.');
         }
+
+        await this.evaluationRepository.delete(id);
     }
 }
 
