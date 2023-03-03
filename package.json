@@ -16,7 +16,6 @@
         "prisma:generate": "prisma generate",
         "prisma:pull": "prisma db push",
         "gen:docs": "insomnia-documenter --config docs/insomnia.json -o docs",
-        "deploy:docs": "gh-pages -d docs -b docs",
         "docs": "serve docs"
     },
     "dependencies": {
@@ -39,7 +38,6 @@
         "@types/jsonwebtoken": "^9.0.1",
         "@types/node": "^18.11.9",
         "@types/uuid": "^9.0.0",
-        "gh-pages": "^5.0.0",
         "insomnia-documenter": "^0.5.5",
         "serve": "^14.2.0",
         "ts-node": "^10.9.1",
