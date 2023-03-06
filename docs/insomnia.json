@@ -1,1 +1,1143 @@
-{"_type":"export","__export_format":4,"__export_date":"2023-03-03T20:43:43.584Z","__export_source":"insomnia.desktop.app:v2022.7.5","resources":[{"_id":"req_776d62f537ae4e988ef134e04c3ff57e","parentId":"fld_22fc8db5e7d0473c9d6757ad4d69364f","modified":1677874606449,"created":1677784759857,"url":"{{ _.base_url }}/public/avatar/4.png","name":"avatar","description":"","method":"GET","body":{},"parameters":[],"headers":[],"authentication":{},"metaSortKey":-1677784759857,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_22fc8db5e7d0473c9d6757ad4d69364f","parentId":"wrk_d3212ce5da0040cb8a45bd62a616dc79","modified":1677784756518,"created":1677784729510,"name":"avatars","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1677784729511,"_type":"request_group"},{"_id":"wrk_d3212ce5da0040cb8a45bd62a616dc79","parentId":null,"modified":1670162161313,"created":1670162161313,"name":"PetFilmes","description":"","scope":"collection","_type":"workspace"},{"_id":"req_0410865dcb9d4dbf99a7ee37ad9038ef","parentId":"fld_f3664e5530d1476aad0ba6b7055631bb","modified":1677787054864,"created":1677699223293,"url":"{{ _.base_url }}/api/ranking/bestmovies","name":"bestMovies","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_50f7c8051c5c4c41812a1ade61c2ad03","name":"authorization","value":"{{ _.authorization }}","description":""}],"authentication":{},"metaSortKey":-1677699223293,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_f3664e5530d1476aad0ba6b7055631bb","parentId":"wrk_d3212ce5da0040cb8a45bd62a616dc79","modified":1677699219705,"created":1677699219705,"name":"ranking","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1677699219706,"_type":"request_group"},{"_id":"req_60e478304d564231be704493e1bee003","parentId":"fld_f3664e5530d1476aad0ba6b7055631bb","modified":1677773992465,"created":1677699267636,"url":"{{ _.base_url }}/api/ranking/mostevaluations","name":"mostEvaluations","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_76ca3d1d99e04dc0abff380ce6ff3aca","name":"authorization","value":"{{ _.authorization }}","description":""}],"authentication":{},"metaSortKey":-1677693325761,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_d704cc129ddd4cf19cce63edf0ab5ebe","parentId":"fld_1a42eee8a496421cba2347c95e406cd7","modified":1677866680405,"created":1677801561862,"url":"{{ _.base_url }}/api/search","name":"find","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"page\": 1,\n\t\"query\": \"fast and\"\n}"},"parameters":[],"headers":[{"id":"pair_50f7c8051c5c4c41812a1ade61c2ad03","name":"authorization","value":"{{ _.authorization }}","description":""},{"name":"Content-Type","value":"application/json"}],"authentication":{},"metaSortKey":-1677699223293,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_1a42eee8a496421cba2347c95e406cd7","parentId":"wrk_d3212ce5da0040cb8a45bd62a616dc79","modified":1677801561845,"created":1677801561845,"name":"search","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1677697951392.25,"_type":"request_group"},{"_id":"req_14c586debb2d4f168a6b840ad4c7d323","parentId":"fld_c230f2b3edf9406398410a7d067e8d51","modified":1677874196729,"created":1677762762231,"url":"{{ _.base_url }}/api/movie","name":"getMovie","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"imdbId\": \"tt0232500\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_a6abb7b9e3604ec18d721af2eb795cab"},{"id":"pair_5ca19578eac048efbf8e5e61da79ac7c","name":"authorization","value":"{{ _.authorization }}","description":""}],"authentication":{},"metaSortKey":-1677762762231,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_c230f2b3edf9406398410a7d067e8d51","parentId":"wrk_d3212ce5da0040cb8a45bd62a616dc79","modified":1677762440627,"created":1677762440627,"name":"movie","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1677696683078.5,"_type":"request_group"},{"_id":"req_2344da8313544843a545263fa3eaab35","parentId":"fld_c230f2b3edf9406398410a7d067e8d51","modified":1677773916682,"created":1677762440659,"url":"{{ _.base_url }}/api/movie/suggested","name":"suggestedMovies","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_a221e9f70b99479380c4d4fe9dfbddb6","name":"authorization","value":"{{ _.authorization }}","description":""}],"authentication":{},"metaSortKey":-1677699223293,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_55c76af8d6a64e75b58b04028e3147dc","parentId":"fld_c230f2b3edf9406398410a7d067e8d51","modified":1677773924414,"created":1677762440680,"url":"{{ _.base_url }}/api/movie/watched","name":"watchedMovies","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_e745e8d4eef24dfdbac31beacdf777ee","name":"authorization","value":"{{ _.authorization }}","description":""}],"authentication":{},"metaSortKey":-1677693325761,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_213d05c8913e413f93005ac4220e77c5","parentId":"fld_c230f2b3edf9406398410a7d067e8d51","modified":1677786678825,"created":1677786658709,"url":"{{ _.base_url }}/api/movie/user","name":"userWatchedMovies","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_a221e9f70b99479380c4d4fe9dfbddb6","name":"authorization","value":"{{ _.authorization }}","description":""}],"authentication":{},"metaSortKey":-1677693325711,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_c37eb9929b1b4b4999c1a64b8cc01155","parentId":"fld_afbfb382795f42c7b028e3200578615d","modified":1677869955596,"created":1677712632364,"url":"{{ _.base_url }}/api/admin/addwatched","name":"addWatched","description":"","method":"GET","body":{"mimeType":"application/json","text":"{\n\t\"imdbId\": \"tt0232500\"\n}"},"parameters":[],"headers":[{"id":"pair_5a16c59650c4482093f7620aba2c544b","name":"authorization","value":"{{ _.authorization_admin }}","description":"","disabled":false},{"name":"Content-Type","value":"application/json","id":"pair_4bc8a865fa5147c282c6f8e0f086601b"}],"authentication":{},"metaSortKey":-1677699223293,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_afbfb382795f42c7b028e3200578615d","parentId":"wrk_d3212ce5da0040cb8a45bd62a616dc79","modified":1677712632330,"created":1677712632330,"name":"admin","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1677694146451,"_type":"request_group"},{"_id":"req_faf9b2635cde4274be8668408aba455a","parentId":"fld_afbfb382795f42c7b028e3200578615d","modified":1677803938053,"created":1677712632398,"url":"{{ _.base_url }}/api/admin/removewatched","name":"removeWatched","description":"","method":"GET","body":{"mimeType":"application/json","text":"{\n\t\"imdbId\": \"avg\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_339a3a49193f42529a835a75760aacd4"},{"id":"pair_8a58087852bd4f77b085d04e1ff5add7","name":"authorization","value":"{{ _.authorization_admin }}","description":""}],"authentication":{},"metaSortKey":-1677693325761,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_785590336c4e463dbace03f4f0852f97","parentId":"fld_afbfb382795f42c7b028e3200578615d","modified":1677803948327,"created":1677714350445,"url":"{{ _.base_url }}/api/admin/users","name":"getUsers","description":"","method":"GET","body":{"mimeType":"application/json","text":""},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_339a3a49193f42529a835a75760aacd4"},{"id":"pair_8a58087852bd4f77b085d04e1ff5add7","name":"authorization","value":"{{ _.authorization_admin }}","description":""}],"authentication":{},"metaSortKey":-1677690376995,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_0f94f1301e064bff9c003d7fe4e6ebad","parentId":"fld_afbfb382795f42c7b028e3200578615d","modified":1677803960217,"created":1677755948228,"url":"{{ _.base_url }}/api/admin/users","name":"deleteUser","description":"","method":"DELETE","body":{"mimeType":"application/json","text":"{\n\t\"id\": \"428fb13d-7499-4b5e-bb1c-2ef8c70df66a\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_339a3a49193f42529a835a75760aacd4"},{"id":"pair_8a58087852bd4f77b085d04e1ff5add7","name":"authorization","value":"{{ _.authorization_admin }}","description":""}],"authentication":{},"metaSortKey":-1677688902612,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_db1cff1721f640ecbc8fe742dabec07a","parentId":"fld_afbfb382795f42c7b028e3200578615d","modified":1677803969803,"created":1677759024985,"url":"{{ _.base_url }}/api/admin/registertoggle","name":"registerToggle","description":"","method":"PUT","body":{},"parameters":[],"headers":[{"id":"pair_99810591f07946ebac0fc0ec44d28f4d","name":"authorization","value":"{{ _.authorization_admin }}","description":""},{"id":"pair_9b9663e5bdda418d837d72ab96e32360","name":"","value":"","description":""}],"authentication":{},"metaSortKey":-1677688902562,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_3cf2fae9278647dbad7734ddd501552d","parentId":"fld_afbfb382795f42c7b028e3200578615d","modified":1677803980706,"created":1677760200233,"url":"{{ _.base_url }}/api/admin/registerison","name":"registerIsOn","description":"","method":"GET","body":{},"parameters":[],"headers":[],"authentication":{},"metaSortKey":-1677688165395.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_78988f2624314559a921087a4c858bf3","parentId":"fld_f417370e9d7241e5bab56aa5ff44a608","modified":1677773763168,"created":1677689127948,"url":"{{ _.base_url }}/api/evaluation","name":"readEvaluation","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_3f093f79efe84f83ac39509acdf46a73","name":"authorization","value":"{{ _.authorization }}","description":""}],"authentication":{},"metaSortKey":-1677687428229,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_f417370e9d7241e5bab56aa5ff44a608","parentId":"wrk_d3212ce5da0040cb8a45bd62a616dc79","modified":1677689073196,"created":1677689073196,"name":"evaluation","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1677689073196,"_type":"request_group"},{"_id":"req_fdb45417c98f4d729966d1d27fdc660e","parentId":"fld_f417370e9d7241e5bab56aa5ff44a608","modified":1677875664532,"created":1677689199983,"url":"{{ _.base_url }}/api/evaluation","name":"createEvaluation","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"rating\": 5,\n\t\"comment\": \"Velozes e furiosos e muito bom, pena que nao da para assistir na netlix.\",\n\t\"imdbId\": \"tt0232500\",\n\t\"stream\": \"netfliX\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_87f04629e295461691e3569b178b870f"},{"id":"pair_cbbecdd11d0d423da1116019172975b1","name":"authorization","value":"{{ _.authorization }}","description":"","disabled":false}],"authentication":{},"metaSortKey":-1677686603443,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_b233d9ca37894faf917619231b8e9359","parentId":"fld_f417370e9d7241e5bab56aa5ff44a608","modified":1677803814591,"created":1677689239340,"url":"{{ _.base_url }}/api/evaluation","name":"updateEvaluation","description":"","method":"PUT","body":{"mimeType":"application/json","text":"{\n\t\"id\": \"9558c895-caf1-4a4e-8404-04d906a9c115\",\n\t\"stream\": \"NETFLIX\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b316f4bb871d4bf5bfd10e60a7367247"},{"id":"pair_5ccb58f0b0e04b6bb436dbd81eddadc2","name":"authorization","value":"{{ _.authorization }}","description":""}],"authentication":{},"metaSortKey":-1677686191050,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_d247a2eb67b14d9580339c73e17e0ed6","parentId":"fld_f417370e9d7241e5bab56aa5ff44a608","modified":1677875399627,"created":1677689251924,"url":"{{ _.base_url }}/api/evaluation","name":"deleteEvaluation","description":"","method":"DELETE","body":{"mimeType":"application/json","text":"{\n\t\"id\": \"25f95a05-211b-436e-9728-cc5336713a7d\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_b1496695fad74e77992988d9e0ef00a6"},{"id":"pair_45fb83d79bf14898b2adb7375a7a470f","name":"authorization","value":"{{ _.authorization }}","description":""}],"authentication":{},"metaSortKey":-1677685984853.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_f3ad0228e529469ea9b7e9591f1164ff","parentId":"fld_c1ca2072aef44ac3bb3efc99337f8dc6","modified":1677804097983,"created":1677804097983,"url":"{{ _.base_url }}/api/user","name":"readUser","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_95a5444bd7ac46ecac4d83001377a040","name":"authorization","value":"{{ _.authorization }}","description":"","disabled":false},{"id":"pair_f28e0d3938ea4259b12bc4ca24570463","name":"","value":"","description":""}],"authentication":{},"metaSortKey":-1677629608830,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_c1ca2072aef44ac3bb3efc99337f8dc6","parentId":"wrk_d3212ce5da0040cb8a45bd62a616dc79","modified":1677804097926,"created":1677804097926,"name":"user","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1670162170141,"_type":"request_group"},{"_id":"req_f43a7689812544d5bdc77e0eaaaa334b","parentId":"fld_c1ca2072aef44ac3bb3efc99337f8dc6","modified":1677874933614,"created":1677804097952,"url":"{{ _.base_url }}/api/user","name":"createUser","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"email\": \"adadasdasmin@admin.com\",\n\t\"name\": \"admin\",\n\t\"password\": \"123\",\n\t\"profilePic\": 4\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_0bb132347d4c44d8acedf55906d69147"}],"authentication":{},"metaSortKey":-1670162174210,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_940337c517644c3c9ff827c79cb803f1","parentId":"fld_c1ca2072aef44ac3bb3efc99337f8dc6","modified":1677874832901,"created":1677804098009,"url":"{{ _.base_url }}/api/login","name":"loginUser","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"email\": \"admin@admin.com\",\n\t\"password\": \"123\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_0bb132347d4c44d8acedf55906d69147"}],"authentication":{},"metaSortKey":-1668832688626.75,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_b4fcce85a3bb4ba399878e2129b9a5a5","parentId":"fld_c1ca2072aef44ac3bb3efc99337f8dc6","modified":1677874958145,"created":1677804097991,"url":"{{ _.base_url }}/api/user","name":"updateUser","description":"","method":"PUT","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"jvm\",\n\t\"password\": \"123\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_0bb132347d4c44d8acedf55906d69147"},{"id":"pair_263a0049237a424e921d7bf26dad2569","name":"authorization","value":"{{ _.authorization }}","description":""}],"authentication":{},"metaSortKey":-1667503203043.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_d6c762fc098543a89d14204ba0bd13df","parentId":"fld_c1ca2072aef44ac3bb3efc99337f8dc6","modified":1677804098000,"created":1677804098000,"url":"{{ _.base_url }}/api/user","name":"deleteUser","description":"","method":"DELETE","body":{"mimeType":"application/json","text":""},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_0bb132347d4c44d8acedf55906d69147"},{"id":"pair_e4bfa6d3473a45ec9ed46bce18387dea","name":"authorization","value":"{{ _.authorization }}","description":""}],"authentication":{},"metaSortKey":-1666173717460.25,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_85bbad193edc4be2a4c598ff3fd1047e","parentId":"fld_fd302d867b0a427d83f65dac56e6dd6b","modified":1677874519044,"created":1677685778657,"url":"{{ _.base_url }}/api/react/like","name":"like","description":"","method":"PUT","body":{"mimeType":"application/json","text":"{\n\t\"imdbId\": \"tt0232500\"\n}"},"parameters":[],"headers":[{"id":"pair_df94c5f0208c4dd7a12fca6bc1413c64","name":"authorization","value":"{{ _.authorization }}","description":""},{"name":"Content-Type","value":"application/json","id":"pair_769490a3666e4460a6c673202bcbfad8"}],"authentication":{},"metaSortKey":-1677685778657,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_fd302d867b0a427d83f65dac56e6dd6b","parentId":"wrk_d3212ce5da0040cb8a45bd62a616dc79","modified":1677804105269,"created":1677685777035,"name":"react","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1670162170116,"_type":"request_group"},{"_id":"req_e7c3dacb585f4c69bfa68ee812fbfeaa","parentId":"fld_fd302d867b0a427d83f65dac56e6dd6b","modified":1677773703434,"created":1677685816654,"url":"{{ _.base_url }}/api/react/dislike","name":"dislike","description":"","method":"PUT","body":{"mimeType":"application/json","text":"{\n\t\"imdbId\": \"avg\"\n}"},"parameters":[],"headers":[{"id":"pair_a8397378f8754fcbacae176fb4b9c730","name":"authorization","value":"{{ _.authorization }}","description":""},{"name":"Content-Type","value":"application/json","id":"pair_ae088d4b288f40b4b4334a7ef0247c60"}],"authentication":{},"metaSortKey":-1677657693743.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_1b35dcfed16145299aee1cdd131f523a","parentId":"fld_eb9e522942d94914984da0fb321c0f09","modified":1677865381929,"created":1677861950899,"url":"https://movie-database-alternative.p.rapidapi.com/","name":"byId","description":"","method":"GET","body":{"mimeType":"application/json","text":""},"parameters":[{"id":"pair_61afa88006e44c8c99a935f1dfd87b34","name":"i","value":"tt1259998","description":""},{"id":"pair_2c92597d296a4a94a3be39a01f0a260e","name":"r","value":"json","description":""}],"headers":[{"id":"pair_0ea0b3958b4143c0a688bce998966a7b","name":"X-RapidAPI-Key","value":"514c4e9366msh7191d163dfecc7dp184743jsna74a5c0b77f3","description":""},{"name":"Content-Type","value":"application/json"}],"authentication":{},"metaSortKey":-1677861950899,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_eb9e522942d94914984da0fb321c0f09","parentId":"wrk_d3212ce5da0040cb8a45bd62a616dc79","modified":1677861947748,"created":1677861942886,"name":"rapidapi","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1670162170066,"_type":"request_group"},{"_id":"req_e1123f022892444abaa662a4765c04a1","parentId":"fld_eb9e522942d94914984da0fb321c0f09","modified":1677862904314,"created":1677862213478,"url":"https://movie-database-alternative.p.rapidapi.com/","name":"search","description":"","method":"GET","body":{"mimeType":"application/json","text":""},"parameters":[{"id":"pair_61afa88006e44c8c99a935f1dfd87b34","name":"s","value":"abc","description":""},{"id":"pair_2c92597d296a4a94a3be39a01f0a260e","name":"r","value":"json","description":""},{"id":"pair_bdacf7aa89d44c6bb1830e10951857ae","name":"page","value":"2","description":""}],"headers":[{"id":"pair_0ea0b3958b4143c0a688bce998966a7b","name":"X-RapidAPI-Key","value":"514c4e9366msh7191d163dfecc7dp184743jsna74a5c0b77f3","description":""},{"name":"Content-Type","value":"application/json"}],"authentication":{},"metaSortKey":-1677823355378,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"env_db75b3e5917d877d21f7c84272d094b11bf5be83","parentId":"wrk_d3212ce5da0040cb8a45bd62a616dc79","modified":1677773191552,"created":1670162161442,"name":"Base Environment","data":{"host":"localhost:3000"},"dataPropertyOrder":{"&":["host"]},"color":null,"isPrivate":false,"metaSortKey":1670162161442,"_type":"environment"},{"_id":"jar_db75b3e5917d877d21f7c84272d094b11bf5be83","parentId":"wrk_d3212ce5da0040cb8a45bd62a616dc79","modified":1670162161455,"created":1670162161455,"name":"Default Jar","cookies":[],"_type":"cookie_jar"},{"_id":"spc_068b9dbec5994d4686983d43c0693985","parentId":"wrk_d3212ce5da0040cb8a45bd62a616dc79","modified":1670162161409,"created":1670162161409,"fileName":"PetFilmes","contents":"","contentType":"yaml","_type":"api_spec"},{"_id":"env_0ad2d5559e064bbaa17ba658befe13da","parentId":"env_db75b3e5917d877d21f7c84272d094b11bf5be83","modified":1677876179341,"created":1677773201359,"name":"petflix","data":{"base_url":"localhost:3232","authorization":"secret","authorization_admin":"secret"},"dataPropertyOrder":{"&":["base_url","authorization","authorization_admin"]},"color":"#7d69cb","isPrivate":false,"metaSortKey":1677773201359,"_type":"environment"}]}
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2023-03-06T02:07:04.918Z",
+    "__export_source": "insomnia.desktop.app:v2022.7.5",
+    "resources": [
+        {
+            "_id": "req_776d62f537ae4e988ef134e04c3ff57e",
+            "parentId": "fld_22fc8db5e7d0473c9d6757ad4d69364f",
+            "modified": 1678062085407,
+            "created": 1677784759857,
+            "url": "{{ _.base_url }}/public/avatar/32.png",
+            "name": "avatar",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1677784759857,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_22fc8db5e7d0473c9d6757ad4d69364f",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1677784756518,
+            "created": 1677784729510,
+            "name": "avatars",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1677784729511,
+            "_type": "request_group"
+        },
+        {
+            "_id": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "parentId": null,
+            "modified": 1670162161313,
+            "created": 1670162161313,
+            "name": "PetFilmes",
+            "description": "",
+            "scope": "collection",
+            "_type": "workspace"
+        },
+        {
+            "_id": "req_e7db9832bca549d4969b535b613afede",
+            "parentId": "fld_22fc8db5e7d0473c9d6757ad4d69364f",
+            "modified": 1678057086217,
+            "created": 1678054296765,
+            "url": "{{ _.base_url }}/api/avatar",
+            "name": "amountOfAvatars",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1677784759807,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_0410865dcb9d4dbf99a7ee37ad9038ef",
+            "parentId": "fld_f3664e5530d1476aad0ba6b7055631bb",
+            "modified": 1677787054864,
+            "created": 1677699223293,
+            "url": "{{ _.base_url }}/api/ranking/bestmovies",
+            "name": "bestMovies",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_50f7c8051c5c4c41812a1ade61c2ad03",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677699223293,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_f3664e5530d1476aad0ba6b7055631bb",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1677699219705,
+            "created": 1677699219705,
+            "name": "ranking",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1677699219706,
+            "_type": "request_group"
+        },
+        {
+            "_id": "req_60e478304d564231be704493e1bee003",
+            "parentId": "fld_f3664e5530d1476aad0ba6b7055631bb",
+            "modified": 1677773992465,
+            "created": 1677699267636,
+            "url": "{{ _.base_url }}/api/ranking/mostevaluations",
+            "name": "mostEvaluations",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_76ca3d1d99e04dc0abff380ce6ff3aca",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677693325761,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_d704cc129ddd4cf19cce63edf0ab5ebe",
+            "parentId": "fld_1a42eee8a496421cba2347c95e406cd7",
+            "modified": 1677866680405,
+            "created": 1677801561862,
+            "url": "{{ _.base_url }}/api/search",
+            "name": "find",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"page\": 1,\n\t\"query\": \"fast and\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_50f7c8051c5c4c41812a1ade61c2ad03",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                },
+                { "name": "Content-Type", "value": "application/json" }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677699223293,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_1a42eee8a496421cba2347c95e406cd7",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1677801561845,
+            "created": 1677801561845,
+            "name": "search",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1677697951392.25,
+            "_type": "request_group"
+        },
+        {
+            "_id": "req_14c586debb2d4f168a6b840ad4c7d323",
+            "parentId": "fld_c230f2b3edf9406398410a7d067e8d51",
+            "modified": 1677874196729,
+            "created": 1677762762231,
+            "url": "{{ _.base_url }}/api/movie",
+            "name": "getMovie",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"imdbId\": \"tt0232500\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_a6abb7b9e3604ec18d721af2eb795cab"
+                },
+                {
+                    "id": "pair_5ca19578eac048efbf8e5e61da79ac7c",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677762762231,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_c230f2b3edf9406398410a7d067e8d51",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1677762440627,
+            "created": 1677762440627,
+            "name": "movie",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1677696683078.5,
+            "_type": "request_group"
+        },
+        {
+            "_id": "req_2344da8313544843a545263fa3eaab35",
+            "parentId": "fld_c230f2b3edf9406398410a7d067e8d51",
+            "modified": 1677773916682,
+            "created": 1677762440659,
+            "url": "{{ _.base_url }}/api/movie/suggested",
+            "name": "suggestedMovies",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_a221e9f70b99479380c4d4fe9dfbddb6",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677699223293,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_55c76af8d6a64e75b58b04028e3147dc",
+            "parentId": "fld_c230f2b3edf9406398410a7d067e8d51",
+            "modified": 1677773924414,
+            "created": 1677762440680,
+            "url": "{{ _.base_url }}/api/movie/watched",
+            "name": "watchedMovies",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_e745e8d4eef24dfdbac31beacdf777ee",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677693325761,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_213d05c8913e413f93005ac4220e77c5",
+            "parentId": "fld_c230f2b3edf9406398410a7d067e8d51",
+            "modified": 1677786678825,
+            "created": 1677786658709,
+            "url": "{{ _.base_url }}/api/movie/user",
+            "name": "userWatchedMovies",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_a221e9f70b99479380c4d4fe9dfbddb6",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677693325711,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_c37eb9929b1b4b4999c1a64b8cc01155",
+            "parentId": "fld_afbfb382795f42c7b028e3200578615d",
+            "modified": 1677869955596,
+            "created": 1677712632364,
+            "url": "{{ _.base_url }}/api/admin/addwatched",
+            "name": "addWatched",
+            "description": "",
+            "method": "GET",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"imdbId\": \"tt0232500\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_5a16c59650c4482093f7620aba2c544b",
+                    "name": "authorization",
+                    "value": "{{ _.authorization_admin }}",
+                    "description": "",
+                    "disabled": false
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_4bc8a865fa5147c282c6f8e0f086601b"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677699223293,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_afbfb382795f42c7b028e3200578615d",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1677712632330,
+            "created": 1677712632330,
+            "name": "admin",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1677694146451,
+            "_type": "request_group"
+        },
+        {
+            "_id": "req_faf9b2635cde4274be8668408aba455a",
+            "parentId": "fld_afbfb382795f42c7b028e3200578615d",
+            "modified": 1677803938053,
+            "created": 1677712632398,
+            "url": "{{ _.base_url }}/api/admin/removewatched",
+            "name": "removeWatched",
+            "description": "",
+            "method": "GET",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"imdbId\": \"avg\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_339a3a49193f42529a835a75760aacd4"
+                },
+                {
+                    "id": "pair_8a58087852bd4f77b085d04e1ff5add7",
+                    "name": "authorization",
+                    "value": "{{ _.authorization_admin }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677693325761,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_785590336c4e463dbace03f4f0852f97",
+            "parentId": "fld_afbfb382795f42c7b028e3200578615d",
+            "modified": 1677803948327,
+            "created": 1677714350445,
+            "url": "{{ _.base_url }}/api/admin/users",
+            "name": "getUsers",
+            "description": "",
+            "method": "GET",
+            "body": { "mimeType": "application/json", "text": "" },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_339a3a49193f42529a835a75760aacd4"
+                },
+                {
+                    "id": "pair_8a58087852bd4f77b085d04e1ff5add7",
+                    "name": "authorization",
+                    "value": "{{ _.authorization_admin }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677690376995,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_0f94f1301e064bff9c003d7fe4e6ebad",
+            "parentId": "fld_afbfb382795f42c7b028e3200578615d",
+            "modified": 1677803960217,
+            "created": 1677755948228,
+            "url": "{{ _.base_url }}/api/admin/users",
+            "name": "deleteUser",
+            "description": "",
+            "method": "DELETE",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"id\": \"428fb13d-7499-4b5e-bb1c-2ef8c70df66a\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_339a3a49193f42529a835a75760aacd4"
+                },
+                {
+                    "id": "pair_8a58087852bd4f77b085d04e1ff5add7",
+                    "name": "authorization",
+                    "value": "{{ _.authorization_admin }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677688902612,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_db1cff1721f640ecbc8fe742dabec07a",
+            "parentId": "fld_afbfb382795f42c7b028e3200578615d",
+            "modified": 1677803969803,
+            "created": 1677759024985,
+            "url": "{{ _.base_url }}/api/admin/registertoggle",
+            "name": "registerToggle",
+            "description": "",
+            "method": "PUT",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_99810591f07946ebac0fc0ec44d28f4d",
+                    "name": "authorization",
+                    "value": "{{ _.authorization_admin }}",
+                    "description": ""
+                },
+                {
+                    "id": "pair_9b9663e5bdda418d837d72ab96e32360",
+                    "name": "",
+                    "value": "",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677688902562,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_3cf2fae9278647dbad7734ddd501552d",
+            "parentId": "fld_afbfb382795f42c7b028e3200578615d",
+            "modified": 1677803980706,
+            "created": 1677760200233,
+            "url": "{{ _.base_url }}/api/admin/registerison",
+            "name": "registerIsOn",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1677688165395.5,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_78988f2624314559a921087a4c858bf3",
+            "parentId": "fld_f417370e9d7241e5bab56aa5ff44a608",
+            "modified": 1677773763168,
+            "created": 1677689127948,
+            "url": "{{ _.base_url }}/api/evaluation",
+            "name": "readEvaluation",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_3f093f79efe84f83ac39509acdf46a73",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677687428229,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_f417370e9d7241e5bab56aa5ff44a608",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1677689073196,
+            "created": 1677689073196,
+            "name": "evaluation",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1677689073196,
+            "_type": "request_group"
+        },
+        {
+            "_id": "req_fdb45417c98f4d729966d1d27fdc660e",
+            "parentId": "fld_f417370e9d7241e5bab56aa5ff44a608",
+            "modified": 1677875664532,
+            "created": 1677689199983,
+            "url": "{{ _.base_url }}/api/evaluation",
+            "name": "createEvaluation",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"rating\": 5,\n\t\"comment\": \"Velozes e furiosos e muito bom, pena que nao da para assistir na netlix.\",\n\t\"imdbId\": \"tt0232500\",\n\t\"stream\": \"netfliX\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_87f04629e295461691e3569b178b870f"
+                },
+                {
+                    "id": "pair_cbbecdd11d0d423da1116019172975b1",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": "",
+                    "disabled": false
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677686603443,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_b233d9ca37894faf917619231b8e9359",
+            "parentId": "fld_f417370e9d7241e5bab56aa5ff44a608",
+            "modified": 1677803814591,
+            "created": 1677689239340,
+            "url": "{{ _.base_url }}/api/evaluation",
+            "name": "updateEvaluation",
+            "description": "",
+            "method": "PUT",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"id\": \"9558c895-caf1-4a4e-8404-04d906a9c115\",\n\t\"stream\": \"NETFLIX\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_b316f4bb871d4bf5bfd10e60a7367247"
+                },
+                {
+                    "id": "pair_5ccb58f0b0e04b6bb436dbd81eddadc2",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677686191050,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_d247a2eb67b14d9580339c73e17e0ed6",
+            "parentId": "fld_f417370e9d7241e5bab56aa5ff44a608",
+            "modified": 1677875399627,
+            "created": 1677689251924,
+            "url": "{{ _.base_url }}/api/evaluation",
+            "name": "deleteEvaluation",
+            "description": "",
+            "method": "DELETE",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"id\": \"25f95a05-211b-436e-9728-cc5336713a7d\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_b1496695fad74e77992988d9e0ef00a6"
+                },
+                {
+                    "id": "pair_45fb83d79bf14898b2adb7375a7a470f",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677685984853.5,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_f3ad0228e529469ea9b7e9591f1164ff",
+            "parentId": "fld_c1ca2072aef44ac3bb3efc99337f8dc6",
+            "modified": 1677804097983,
+            "created": 1677804097983,
+            "url": "{{ _.base_url }}/api/user",
+            "name": "readUser",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_95a5444bd7ac46ecac4d83001377a040",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": "",
+                    "disabled": false
+                },
+                {
+                    "id": "pair_f28e0d3938ea4259b12bc4ca24570463",
+                    "name": "",
+                    "value": "",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677629608830,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_c1ca2072aef44ac3bb3efc99337f8dc6",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1677804097926,
+            "created": 1677804097926,
+            "name": "user",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1670162170141,
+            "_type": "request_group"
+        },
+        {
+            "_id": "req_f43a7689812544d5bdc77e0eaaaa334b",
+            "parentId": "fld_c1ca2072aef44ac3bb3efc99337f8dc6",
+            "modified": 1677874933614,
+            "created": 1677804097952,
+            "url": "{{ _.base_url }}/api/user",
+            "name": "createUser",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"email\": \"adadasdasmin@admin.com\",\n\t\"name\": \"admin\",\n\t\"password\": \"123\",\n\t\"profilePic\": 4\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_0bb132347d4c44d8acedf55906d69147"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1670162174210,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_940337c517644c3c9ff827c79cb803f1",
+            "parentId": "fld_c1ca2072aef44ac3bb3efc99337f8dc6",
+            "modified": 1677874832901,
+            "created": 1677804098009,
+            "url": "{{ _.base_url }}/api/login",
+            "name": "loginUser",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"email\": \"admin@admin.com\",\n\t\"password\": \"123\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_0bb132347d4c44d8acedf55906d69147"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1668832688626.75,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_b4fcce85a3bb4ba399878e2129b9a5a5",
+            "parentId": "fld_c1ca2072aef44ac3bb3efc99337f8dc6",
+            "modified": 1677874958145,
+            "created": 1677804097991,
+            "url": "{{ _.base_url }}/api/user",
+            "name": "updateUser",
+            "description": "",
+            "method": "PUT",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"name\": \"jvm\",\n\t\"password\": \"123\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_0bb132347d4c44d8acedf55906d69147"
+                },
+                {
+                    "id": "pair_263a0049237a424e921d7bf26dad2569",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1667503203043.5,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_d6c762fc098543a89d14204ba0bd13df",
+            "parentId": "fld_c1ca2072aef44ac3bb3efc99337f8dc6",
+            "modified": 1677804098000,
+            "created": 1677804098000,
+            "url": "{{ _.base_url }}/api/user",
+            "name": "deleteUser",
+            "description": "",
+            "method": "DELETE",
+            "body": { "mimeType": "application/json", "text": "" },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_0bb132347d4c44d8acedf55906d69147"
+                },
+                {
+                    "id": "pair_e4bfa6d3473a45ec9ed46bce18387dea",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1666173717460.25,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_85bbad193edc4be2a4c598ff3fd1047e",
+            "parentId": "fld_fd302d867b0a427d83f65dac56e6dd6b",
+            "modified": 1677874519044,
+            "created": 1677685778657,
+            "url": "{{ _.base_url }}/api/react/like",
+            "name": "like",
+            "description": "",
+            "method": "PUT",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"imdbId\": \"tt0232500\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_df94c5f0208c4dd7a12fca6bc1413c64",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_769490a3666e4460a6c673202bcbfad8"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677685778657,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_fd302d867b0a427d83f65dac56e6dd6b",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1677804105269,
+            "created": 1677685777035,
+            "name": "react",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1670162170116,
+            "_type": "request_group"
+        },
+        {
+            "_id": "req_e7c3dacb585f4c69bfa68ee812fbfeaa",
+            "parentId": "fld_fd302d867b0a427d83f65dac56e6dd6b",
+            "modified": 1677773703434,
+            "created": 1677685816654,
+            "url": "{{ _.base_url }}/api/react/dislike",
+            "name": "dislike",
+            "description": "",
+            "method": "PUT",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"imdbId\": \"avg\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "id": "pair_a8397378f8754fcbacae176fb4b9c730",
+                    "name": "authorization",
+                    "value": "{{ _.authorization }}",
+                    "description": ""
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_ae088d4b288f40b4b4334a7ef0247c60"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677657693743.5,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_1b35dcfed16145299aee1cdd131f523a",
+            "parentId": "fld_eb9e522942d94914984da0fb321c0f09",
+            "modified": 1677865381929,
+            "created": 1677861950899,
+            "url": "https://movie-database-alternative.p.rapidapi.com/",
+            "name": "byId",
+            "description": "",
+            "method": "GET",
+            "body": { "mimeType": "application/json", "text": "" },
+            "parameters": [
+                {
+                    "id": "pair_61afa88006e44c8c99a935f1dfd87b34",
+                    "name": "i",
+                    "value": "tt1259998",
+                    "description": ""
+                },
+                {
+                    "id": "pair_2c92597d296a4a94a3be39a01f0a260e",
+                    "name": "r",
+                    "value": "json",
+                    "description": ""
+                }
+            ],
+            "headers": [
+                {
+                    "id": "pair_0ea0b3958b4143c0a688bce998966a7b",
+                    "name": "X-RapidAPI-Key",
+                    "value": "514c4e9366msh7191d163dfecc7dp184743jsna74a5c0b77f3",
+                    "description": ""
+                },
+                { "name": "Content-Type", "value": "application/json" }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677861950899,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_eb9e522942d94914984da0fb321c0f09",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1677861947748,
+            "created": 1677861942886,
+            "name": "rapidapi",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1670162170066,
+            "_type": "request_group"
+        },
+        {
+            "_id": "req_e1123f022892444abaa662a4765c04a1",
+            "parentId": "fld_eb9e522942d94914984da0fb321c0f09",
+            "modified": 1677862904314,
+            "created": 1677862213478,
+            "url": "https://movie-database-alternative.p.rapidapi.com/",
+            "name": "search",
+            "description": "",
+            "method": "GET",
+            "body": { "mimeType": "application/json", "text": "" },
+            "parameters": [
+                {
+                    "id": "pair_61afa88006e44c8c99a935f1dfd87b34",
+                    "name": "s",
+                    "value": "abc",
+                    "description": ""
+                },
+                {
+                    "id": "pair_2c92597d296a4a94a3be39a01f0a260e",
+                    "name": "r",
+                    "value": "json",
+                    "description": ""
+                },
+                {
+                    "id": "pair_bdacf7aa89d44c6bb1830e10951857ae",
+                    "name": "page",
+                    "value": "2",
+                    "description": ""
+                }
+            ],
+            "headers": [
+                {
+                    "id": "pair_0ea0b3958b4143c0a688bce998966a7b",
+                    "name": "X-RapidAPI-Key",
+                    "value": "514c4e9366msh7191d163dfecc7dp184743jsna74a5c0b77f3",
+                    "description": ""
+                },
+                { "name": "Content-Type", "value": "application/json" }
+            ],
+            "authentication": {},
+            "metaSortKey": -1677823355378,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "env_db75b3e5917d877d21f7c84272d094b11bf5be83",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1677773191552,
+            "created": 1670162161442,
+            "name": "Base Environment",
+            "data": { "host": "localhost:3000" },
+            "dataPropertyOrder": { "&": ["host"] },
+            "color": null,
+            "isPrivate": false,
+            "metaSortKey": 1670162161442,
+            "_type": "environment"
+        },
+        {
+            "_id": "jar_db75b3e5917d877d21f7c84272d094b11bf5be83",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1670162161455,
+            "created": 1670162161455,
+            "name": "Default Jar",
+            "cookies": [],
+            "_type": "cookie_jar"
+        },
+        {
+            "_id": "spc_068b9dbec5994d4686983d43c0693985",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1670162161409,
+            "created": 1670162161409,
+            "fileName": "PetFilmes",
+            "contents": "",
+            "contentType": "yaml",
+            "_type": "api_spec"
+        },
+        {
+            "_id": "env_0ad2d5559e064bbaa17ba658befe13da",
+            "parentId": "env_db75b3e5917d877d21f7c84272d094b11bf5be83",
+            "modified": 1677876179341,
+            "created": 1677773201359,
+            "name": "petflix",
+            "data": {
+                "base_url": "localhost:3232",
+                "authorization": "secret",
+                "authorization_admin": "secret"
+            },
+            "dataPropertyOrder": {
+                "&": ["base_url", "authorization", "authorization_admin"]
+            },
+            "color": "#7d69cb",
+            "isPrivate": false,
+            "metaSortKey": 1677773201359,
+            "_type": "environment"
+        }
+    ]
+}
