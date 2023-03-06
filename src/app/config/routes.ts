@@ -5,9 +5,10 @@ import {
     MoviesApiRoute,
     RankingRoute,
     ReactRoute,
-    UserRoute
+    UserRoute,
+    AvatarRoute,
+    AdminRoute
 } from '../routes';
-import { AdminRoute } from '../routes/AdminRoute';
 
 const routes = (app: Express) => {
     const router = Router();
@@ -20,6 +21,7 @@ const routes = (app: Express) => {
     MovieRoute(router);
     MoviesApiRoute(router);
     AdminRoute(router);
+    AvatarRoute(router);
 };
 
 export { routes };
