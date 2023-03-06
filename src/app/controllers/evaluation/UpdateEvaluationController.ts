@@ -9,6 +9,7 @@ class UpdateEvaluationController {
         try {
             const evaluation = await this.updateEvaluation.execute(
                 request.userId,
+                request.query,
                 request.body
             );
             return response.status(202).json(evaluation);

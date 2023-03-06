@@ -34,7 +34,7 @@ export const MovieRoute = (router: Router) => {
         new WatchedMoviesController(watchedMovies).handle
     );
 
-    router.post(
+    router.get(
         '/movie',
         isAuthMiddleware,
         new GetMovieController(getMovie).handle

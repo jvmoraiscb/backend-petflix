@@ -8,7 +8,7 @@ class AddWatchedAdminController {
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            await this.addWatchedAdmin.execute(request.body);
+            await this.addWatchedAdmin.execute(request.query);
             return response.status(201).send();
         } catch (err: any) {
             return response.status(400).json({

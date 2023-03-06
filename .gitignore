@@ -6,6 +6,7 @@ node_modules
 
 # Database
 prisma/dev.db*
+prisma/migrations
 data
 build
 
@@ -14,3 +15,6 @@ docs/bundle.css
 docs/bundle.css.map
 docs/bundle.js
 docs/bundle.js.map
+docs/favicon.ico
+docs/index.html
+docs/logo.png

@@ -8,7 +8,7 @@ class DeleteUserAdminController {
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            await this.deleteUserAdmin.execute(request.body);
+            await this.deleteUserAdmin.execute(request.query);
             return response.status(201).send();
         } catch (err: any) {
             return response.status(400).json({

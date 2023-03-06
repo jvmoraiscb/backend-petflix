@@ -1,15 +1,15 @@
 {
     "_type": "export",
     "__export_format": 4,
-    "__export_date": "2023-03-06T02:58:13.043Z",
+    "__export_date": "2023-03-06T20:21:27.301Z",
     "__export_source": "insomnia.desktop.app:v2022.7.5",
     "resources": [
         {
             "_id": "req_776d62f537ae4e988ef134e04c3ff57e",
             "parentId": "fld_22fc8db5e7d0473c9d6757ad4d69364f",
-            "modified": 1678062085407,
+            "modified": 1678128854907,
             "created": 1677784759857,
-            "url": "{{ _.base_url }}/public/avatar/32.png",
+            "url": "{{ _.base_url }}/public/avatar/27.png",
             "name": "avatar",
             "description": "",
             "method": "GET",
@@ -75,7 +75,7 @@
         {
             "_id": "req_0410865dcb9d4dbf99a7ee37ad9038ef",
             "parentId": "fld_f3664e5530d1476aad0ba6b7055631bb",
-            "modified": 1677787054864,
+            "modified": 1678115613254,
             "created": 1677699223293,
             "url": "{{ _.base_url }}/api/ranking/bestmovies",
             "name": "bestMovies",
@@ -87,7 +87,7 @@
                 {
                     "id": "pair_50f7c8051c5c4c41812a1ade61c2ad03",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": ""
                 }
             ],
@@ -117,7 +117,7 @@
         {
             "_id": "req_60e478304d564231be704493e1bee003",
             "parentId": "fld_f3664e5530d1476aad0ba6b7055631bb",
-            "modified": 1677773992465,
+            "modified": 1678115606932,
             "created": 1677699267636,
             "url": "{{ _.base_url }}/api/ranking/mostevaluations",
             "name": "mostEvaluations",
@@ -129,7 +129,7 @@
                 {
                     "id": "pair_76ca3d1d99e04dc0abff380ce6ff3aca",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": ""
                 }
             ],
@@ -147,10 +147,10 @@
         {
             "_id": "req_d704cc129ddd4cf19cce63edf0ab5ebe",
             "parentId": "fld_1a42eee8a496421cba2347c95e406cd7",
-            "modified": 1677866680405,
+            "modified": 1678130132252,
             "created": 1677801561862,
             "url": "{{ _.base_url }}/api/search",
-            "name": "find",
+            "name": "searchMovie",
             "description": "",
             "method": "POST",
             "body": {
@@ -162,10 +162,14 @@
                 {
                     "id": "pair_50f7c8051c5c4c41812a1ade61c2ad03",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": ""
                 },
-                { "name": "Content-Type", "value": "application/json" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_21351852a7ad41a59ae77f038a7921ed"
+                }
             ],
             "authentication": {},
             "metaSortKey": -1677699223293,
@@ -193,28 +197,28 @@
         {
             "_id": "req_14c586debb2d4f168a6b840ad4c7d323",
             "parentId": "fld_c230f2b3edf9406398410a7d067e8d51",
-            "modified": 1677874196729,
+            "modified": 1678129990822,
             "created": 1677762762231,
             "url": "{{ _.base_url }}/api/movie",
             "name": "getMovie",
             "description": "",
-            "method": "POST",
-            "body": {
-                "mimeType": "application/json",
-                "text": "{\n\t\"imdbId\": \"tt0232500\"\n}"
-            },
-            "parameters": [],
-            "headers": [
+            "method": "GET",
+            "body": {},
+            "parameters": [
                 {
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "id": "pair_a6abb7b9e3604ec18d721af2eb795cab"
-                },
+                    "id": "pair_9a0593fa6a8f48f788559bc99c753799",
+                    "name": "imdbId",
+                    "value": "tt0232500",
+                    "description": ""
+                }
+            ],
+            "headers": [
                 {
                     "id": "pair_5ca19578eac048efbf8e5e61da79ac7c",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
-                    "description": ""
+                    "value": "{{ _.user_authorization }}",
+                    "description": "",
+                    "disabled": false
                 }
             ],
             "authentication": {},
@@ -243,7 +247,7 @@
         {
             "_id": "req_2344da8313544843a545263fa3eaab35",
             "parentId": "fld_c230f2b3edf9406398410a7d067e8d51",
-            "modified": 1677773916682,
+            "modified": 1678115587949,
             "created": 1677762440659,
             "url": "{{ _.base_url }}/api/movie/suggested",
             "name": "suggestedMovies",
@@ -255,7 +259,7 @@
                 {
                     "id": "pair_a221e9f70b99479380c4d4fe9dfbddb6",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": ""
                 }
             ],
@@ -273,7 +277,7 @@
         {
             "_id": "req_55c76af8d6a64e75b58b04028e3147dc",
             "parentId": "fld_c230f2b3edf9406398410a7d067e8d51",
-            "modified": 1677773924414,
+            "modified": 1678115579800,
             "created": 1677762440680,
             "url": "{{ _.base_url }}/api/movie/watched",
             "name": "watchedMovies",
@@ -285,7 +289,7 @@
                 {
                     "id": "pair_e745e8d4eef24dfdbac31beacdf777ee",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": ""
                 }
             ],
@@ -303,7 +307,7 @@
         {
             "_id": "req_213d05c8913e413f93005ac4220e77c5",
             "parentId": "fld_c230f2b3edf9406398410a7d067e8d51",
-            "modified": 1677786678825,
+            "modified": 1678115573445,
             "created": 1677786658709,
             "url": "{{ _.base_url }}/api/movie/user",
             "name": "userWatchedMovies",
@@ -315,7 +319,7 @@
                 {
                     "id": "pair_a221e9f70b99479380c4d4fe9dfbddb6",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": ""
                 }
             ],
@@ -333,29 +337,28 @@
         {
             "_id": "req_c37eb9929b1b4b4999c1a64b8cc01155",
             "parentId": "fld_afbfb382795f42c7b028e3200578615d",
-            "modified": 1677869955596,
+            "modified": 1678126625913,
             "created": 1677712632364,
             "url": "{{ _.base_url }}/api/admin/addwatched",
             "name": "addWatched",
             "description": "",
             "method": "GET",
-            "body": {
-                "mimeType": "application/json",
-                "text": "{\n\t\"imdbId\": \"tt0232500\"\n}"
-            },
-            "parameters": [],
+            "body": {},
+            "parameters": [
+                {
+                    "id": "pair_8d898cb72361444f849006fe3aaa4656",
+                    "name": "imdbId",
+                    "value": "tt0232500",
+                    "description": ""
+                }
+            ],
             "headers": [
                 {
                     "id": "pair_5a16c59650c4482093f7620aba2c544b",
                     "name": "authorization",
-                    "value": "{{ _.authorization_admin }}",
+                    "value": "{{ _.admin_authorization }}",
                     "description": "",
                     "disabled": false
-                },
-                {
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "id": "pair_4bc8a865fa5147c282c6f8e0f086601b"
                 }
             ],
             "authentication": {},
@@ -384,27 +387,26 @@
         {
             "_id": "req_faf9b2635cde4274be8668408aba455a",
             "parentId": "fld_afbfb382795f42c7b028e3200578615d",
-            "modified": 1677803938053,
+            "modified": 1678119160512,
             "created": 1677712632398,
             "url": "{{ _.base_url }}/api/admin/removewatched",
             "name": "removeWatched",
             "description": "",
             "method": "GET",
-            "body": {
-                "mimeType": "application/json",
-                "text": "{\n\t\"imdbId\": \"avg\"\n}"
-            },
-            "parameters": [],
-            "headers": [
+            "body": {},
+            "parameters": [
                 {
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "id": "pair_339a3a49193f42529a835a75760aacd4"
-                },
+                    "id": "pair_81c216471d854ffb8bf3e92653997909",
+                    "name": "imdbId",
+                    "value": "tt0232500",
+                    "description": ""
+                }
+            ],
+            "headers": [
                 {
                     "id": "pair_8a58087852bd4f77b085d04e1ff5add7",
                     "name": "authorization",
-                    "value": "{{ _.authorization_admin }}",
+                    "value": "{{ _.admin_authorization }}",
                     "description": ""
                 }
             ],
@@ -422,24 +424,19 @@
         {
             "_id": "req_785590336c4e463dbace03f4f0852f97",
             "parentId": "fld_afbfb382795f42c7b028e3200578615d",
-            "modified": 1677803948327,
+            "modified": 1678116098559,
             "created": 1677714350445,
             "url": "{{ _.base_url }}/api/admin/users",
             "name": "getUsers",
             "description": "",
             "method": "GET",
-            "body": { "mimeType": "application/json", "text": "" },
+            "body": {},
             "parameters": [],
             "headers": [
                 {
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "id": "pair_339a3a49193f42529a835a75760aacd4"
-                },
-                {
                     "id": "pair_8a58087852bd4f77b085d04e1ff5add7",
                     "name": "authorization",
-                    "value": "{{ _.authorization_admin }}",
+                    "value": "{{ _.admin_authorization }}",
                     "description": ""
                 }
             ],
@@ -457,27 +454,26 @@
         {
             "_id": "req_0f94f1301e064bff9c003d7fe4e6ebad",
             "parentId": "fld_afbfb382795f42c7b028e3200578615d",
-            "modified": 1677803960217,
+            "modified": 1678119134359,
             "created": 1677755948228,
             "url": "{{ _.base_url }}/api/admin/users",
             "name": "deleteUser",
             "description": "",
             "method": "DELETE",
-            "body": {
-                "mimeType": "application/json",
-                "text": "{\n\t\"id\": \"428fb13d-7499-4b5e-bb1c-2ef8c70df66a\"\n}"
-            },
-            "parameters": [],
-            "headers": [
+            "body": {},
+            "parameters": [
                 {
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "id": "pair_339a3a49193f42529a835a75760aacd4"
-                },
+                    "id": "pair_10c334ed66964902b59418eb4c2aefd8",
+                    "name": "id",
+                    "value": "428fb13d-7499-4b5e-bb1c-2ef8c70df66a",
+                    "description": ""
+                }
+            ],
+            "headers": [
                 {
                     "id": "pair_8a58087852bd4f77b085d04e1ff5add7",
                     "name": "authorization",
-                    "value": "{{ _.authorization_admin }}",
+                    "value": "{{ _.admin_authorization }}",
                     "description": ""
                 }
             ],
@@ -495,7 +491,7 @@
         {
             "_id": "req_db1cff1721f640ecbc8fe742dabec07a",
             "parentId": "fld_afbfb382795f42c7b028e3200578615d",
-            "modified": 1677803969803,
+            "modified": 1678115548760,
             "created": 1677759024985,
             "url": "{{ _.base_url }}/api/admin/registertoggle",
             "name": "registerToggle",
@@ -507,13 +503,7 @@
                 {
                     "id": "pair_99810591f07946ebac0fc0ec44d28f4d",
                     "name": "authorization",
-                    "value": "{{ _.authorization_admin }}",
-                    "description": ""
-                },
-                {
-                    "id": "pair_9b9663e5bdda418d837d72ab96e32360",
-                    "name": "",
-                    "value": "",
+                    "value": "{{ _.admin_authorization }}",
                     "description": ""
                 }
             ],
@@ -531,7 +521,7 @@
         {
             "_id": "req_3cf2fae9278647dbad7734ddd501552d",
             "parentId": "fld_afbfb382795f42c7b028e3200578615d",
-            "modified": 1677803980706,
+            "modified": 1678115357448,
             "created": 1677760200233,
             "url": "{{ _.base_url }}/api/admin/registerison",
             "name": "registerIsOn",
@@ -554,10 +544,10 @@
         {
             "_id": "req_78988f2624314559a921087a4c858bf3",
             "parentId": "fld_f417370e9d7241e5bab56aa5ff44a608",
-            "modified": 1677773763168,
+            "modified": 1678130026081,
             "created": 1677689127948,
             "url": "{{ _.base_url }}/api/evaluation",
-            "name": "readEvaluation",
+            "name": "getUserEvaluations",
             "description": "",
             "method": "GET",
             "body": {},
@@ -566,7 +556,7 @@
                 {
                     "id": "pair_3f093f79efe84f83ac39509acdf46a73",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": ""
                 }
             ],
@@ -596,7 +586,7 @@
         {
             "_id": "req_fdb45417c98f4d729966d1d27fdc660e",
             "parentId": "fld_f417370e9d7241e5bab56aa5ff44a608",
-            "modified": 1677875664532,
+            "modified": 1678129918687,
             "created": 1677689199983,
             "url": "{{ _.base_url }}/api/evaluation",
             "name": "createEvaluation",
@@ -604,21 +594,22 @@
             "method": "POST",
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"rating\": 5,\n\t\"comment\": \"Velozes e furiosos e muito bom, pena que nao da para assistir na netlix.\",\n\t\"imdbId\": \"tt0232500\",\n\t\"stream\": \"netfliX\"\n}"
+                "text": "{\n\t\"rating\": 5,\n\t\"comment\": \"Velozes e furiosos e muito bom, pena que nao da para assistir na netlix.\",\n\t\"imdbId\": \"tt0232500\",\n\t\"stream\": \"piratex\"\n}"
             },
             "parameters": [],
             "headers": [
                 {
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "id": "pair_87f04629e295461691e3569b178b870f"
-                },
-                {
                     "id": "pair_cbbecdd11d0d423da1116019172975b1",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": "",
                     "disabled": false
+                },
+                {
+                    "id": "pair_cbf9dec649cb442fba550c880f046353",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
                 }
             ],
             "authentication": {},
@@ -635,7 +626,7 @@
         {
             "_id": "req_b233d9ca37894faf917619231b8e9359",
             "parentId": "fld_f417370e9d7241e5bab56aa5ff44a608",
-            "modified": 1677803814591,
+            "modified": 1678133734748,
             "created": 1677689239340,
             "url": "{{ _.base_url }}/api/evaluation",
             "name": "updateEvaluation",
@@ -643,19 +634,27 @@
             "method": "PUT",
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"id\": \"9558c895-caf1-4a4e-8404-04d906a9c115\",\n\t\"stream\": \"NETFLIX\"\n}"
+                "text": "{\n\t\"stream\": \"NETFLIX\"\n}"
             },
-            "parameters": [],
-            "headers": [
+            "parameters": [
                 {
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "id": "pair_b316f4bb871d4bf5bfd10e60a7367247"
-                },
+                    "id": "pair_cb6865d7b47b46c9a6d82b4a0de26fcd",
+                    "name": "id",
+                    "value": "9558c895-caf1-4a4e-8404-04d906a9c115",
+                    "description": ""
+                }
+            ],
+            "headers": [
                 {
                     "id": "pair_5ccb58f0b0e04b6bb436dbd81eddadc2",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
+                    "description": ""
+                },
+                {
+                    "id": "pair_97c6e730eddd46b5ac14e54c3fcd7715",
+                    "name": "Content-Type",
+                    "value": "application/json",
                     "description": ""
                 }
             ],
@@ -673,27 +672,26 @@
         {
             "_id": "req_d247a2eb67b14d9580339c73e17e0ed6",
             "parentId": "fld_f417370e9d7241e5bab56aa5ff44a608",
-            "modified": 1677875399627,
+            "modified": 1678118143626,
             "created": 1677689251924,
             "url": "{{ _.base_url }}/api/evaluation",
             "name": "deleteEvaluation",
             "description": "",
             "method": "DELETE",
-            "body": {
-                "mimeType": "application/json",
-                "text": "{\n\t\"id\": \"25f95a05-211b-436e-9728-cc5336713a7d\"\n}"
-            },
-            "parameters": [],
-            "headers": [
+            "body": {},
+            "parameters": [
                 {
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "id": "pair_b1496695fad74e77992988d9e0ef00a6"
-                },
+                    "id": "pair_0dca145274964e45aff4abc3e22f1cb3",
+                    "name": "id",
+                    "value": "25f95a05-211b-436e-9728-cc5336713a7d",
+                    "description": ""
+                }
+            ],
+            "headers": [
                 {
                     "id": "pair_45fb83d79bf14898b2adb7375a7a470f",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": ""
                 }
             ],
@@ -711,7 +709,7 @@
         {
             "_id": "req_f3ad0228e529469ea9b7e9591f1164ff",
             "parentId": "fld_c1ca2072aef44ac3bb3efc99337f8dc6",
-            "modified": 1677804097983,
+            "modified": 1678115713390,
             "created": 1677804097983,
             "url": "{{ _.base_url }}/api/user",
             "name": "readUser",
@@ -723,15 +721,9 @@
                 {
                     "id": "pair_95a5444bd7ac46ecac4d83001377a040",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": "",
                     "disabled": false
-                },
-                {
-                    "id": "pair_f28e0d3938ea4259b12bc4ca24570463",
-                    "name": "",
-                    "value": "",
-                    "description": ""
                 }
             ],
             "authentication": {},
@@ -760,7 +752,7 @@
         {
             "_id": "req_f43a7689812544d5bdc77e0eaaaa334b",
             "parentId": "fld_c1ca2072aef44ac3bb3efc99337f8dc6",
-            "modified": 1677874933614,
+            "modified": 1678133344192,
             "created": 1677804097952,
             "url": "{{ _.base_url }}/api/user",
             "name": "createUser",
@@ -768,7 +760,7 @@
             "method": "POST",
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"email\": \"adadasdasmin@admin.com\",\n\t\"name\": \"admin\",\n\t\"password\": \"123\",\n\t\"profilePic\": 4\n}"
+                "text": "{\n\t\"email\": \"teste@gmail.com\",\n\t\"name\": \"teste\",\n\t\"password\": \"123\",\n\t\"profilePic\": 40\n}"
             },
             "parameters": [],
             "headers": [
@@ -792,7 +784,7 @@
         {
             "_id": "req_940337c517644c3c9ff827c79cb803f1",
             "parentId": "fld_c1ca2072aef44ac3bb3efc99337f8dc6",
-            "modified": 1677874832901,
+            "modified": 1678130397696,
             "created": 1677804098009,
             "url": "{{ _.base_url }}/api/login",
             "name": "loginUser",
@@ -800,7 +792,7 @@
             "method": "POST",
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"email\": \"admin@admin.com\",\n\t\"password\": \"123\"\n}"
+                "text": "{\n\t\"email\": \"teste@gmail.com\",\n\t\"password\": \"123\"\n}"
             },
             "parameters": [],
             "headers": [
@@ -824,7 +816,7 @@
         {
             "_id": "req_b4fcce85a3bb4ba399878e2129b9a5a5",
             "parentId": "fld_c1ca2072aef44ac3bb3efc99337f8dc6",
-            "modified": 1677874958145,
+            "modified": 1678129891417,
             "created": 1677804097991,
             "url": "{{ _.base_url }}/api/user",
             "name": "updateUser",
@@ -832,19 +824,20 @@
             "method": "PUT",
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"name\": \"jvm\",\n\t\"password\": \"123\"\n}"
+                "text": "{\n\t\"name\": \"teste jr\",\n\t\"password\": \"123\"\n}"
             },
             "parameters": [],
             "headers": [
                 {
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "id": "pair_0bb132347d4c44d8acedf55906d69147"
-                },
-                {
                     "id": "pair_263a0049237a424e921d7bf26dad2569",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
+                    "description": ""
+                },
+                {
+                    "id": "pair_0bf8f2ff8412473cb40b926462d273be",
+                    "name": "Content-Type",
+                    "value": "application/json",
                     "description": ""
                 }
             ],
@@ -862,24 +855,19 @@
         {
             "_id": "req_d6c762fc098543a89d14204ba0bd13df",
             "parentId": "fld_c1ca2072aef44ac3bb3efc99337f8dc6",
-            "modified": 1677804098000,
+            "modified": 1678115748719,
             "created": 1677804098000,
             "url": "{{ _.base_url }}/api/user",
             "name": "deleteUser",
             "description": "",
             "method": "DELETE",
-            "body": { "mimeType": "application/json", "text": "" },
+            "body": {},
             "parameters": [],
             "headers": [
                 {
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "id": "pair_0bb132347d4c44d8acedf55906d69147"
-                },
-                {
                     "id": "pair_e4bfa6d3473a45ec9ed46bce18387dea",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": ""
                 }
             ],
@@ -897,28 +885,27 @@
         {
             "_id": "req_85bbad193edc4be2a4c598ff3fd1047e",
             "parentId": "fld_fd302d867b0a427d83f65dac56e6dd6b",
-            "modified": 1677874519044,
+            "modified": 1678134027641,
             "created": 1677685778657,
             "url": "{{ _.base_url }}/api/react/like",
             "name": "like",
             "description": "",
             "method": "PUT",
-            "body": {
-                "mimeType": "application/json",
-                "text": "{\n\t\"imdbId\": \"tt0232500\"\n}"
-            },
-            "parameters": [],
+            "body": {},
+            "parameters": [
+                {
+                    "id": "pair_58858e2693a447f8ab8ce89d73816f50",
+                    "name": "imdbId",
+                    "value": "tt0463985",
+                    "description": ""
+                }
+            ],
             "headers": [
                 {
                     "id": "pair_df94c5f0208c4dd7a12fca6bc1413c64",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": ""
-                },
-                {
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "id": "pair_769490a3666e4460a6c673202bcbfad8"
                 }
             ],
             "authentication": {},
@@ -947,138 +934,31 @@
         {
             "_id": "req_e7c3dacb585f4c69bfa68ee812fbfeaa",
             "parentId": "fld_fd302d867b0a427d83f65dac56e6dd6b",
-            "modified": 1677773703434,
+            "modified": 1678134038042,
             "created": 1677685816654,
             "url": "{{ _.base_url }}/api/react/dislike",
             "name": "dislike",
             "description": "",
             "method": "PUT",
-            "body": {
-                "mimeType": "application/json",
-                "text": "{\n\t\"imdbId\": \"avg\"\n}"
-            },
-            "parameters": [],
+            "body": {},
+            "parameters": [
+                {
+                    "id": "pair_4ad9ecd578de4957b3e68767cc8f2e93",
+                    "name": "imdbId",
+                    "value": "tt0463985",
+                    "description": ""
+                }
+            ],
             "headers": [
                 {
                     "id": "pair_a8397378f8754fcbacae176fb4b9c730",
                     "name": "authorization",
-                    "value": "{{ _.authorization }}",
+                    "value": "{{ _.user_authorization }}",
                     "description": ""
-                },
-                {
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "id": "pair_ae088d4b288f40b4b4334a7ef0247c60"
                 }
             ],
             "authentication": {},
             "metaSortKey": -1677657693743.5,
-            "isPrivate": false,
-            "settingStoreCookies": true,
-            "settingSendCookies": true,
-            "settingDisableRenderRequestBody": false,
-            "settingEncodeUrl": true,
-            "settingRebuildPath": true,
-            "settingFollowRedirects": "global",
-            "_type": "request"
-        },
-        {
-            "_id": "req_1b35dcfed16145299aee1cdd131f523a",
-            "parentId": "fld_eb9e522942d94914984da0fb321c0f09",
-            "modified": 1677865381929,
-            "created": 1677861950899,
-            "url": "https://movie-database-alternative.p.rapidapi.com/",
-            "name": "byId",
-            "description": "",
-            "method": "GET",
-            "body": { "mimeType": "application/json", "text": "" },
-            "parameters": [
-                {
-                    "id": "pair_61afa88006e44c8c99a935f1dfd87b34",
-                    "name": "i",
-                    "value": "tt1259998",
-                    "description": ""
-                },
-                {
-                    "id": "pair_2c92597d296a4a94a3be39a01f0a260e",
-                    "name": "r",
-                    "value": "json",
-                    "description": ""
-                }
-            ],
-            "headers": [
-                {
-                    "id": "pair_0ea0b3958b4143c0a688bce998966a7b",
-                    "name": "X-RapidAPI-Key",
-                    "value": "514c4e9366msh7191d163dfecc7dp184743jsna74a5c0b77f3",
-                    "description": ""
-                },
-                { "name": "Content-Type", "value": "application/json" }
-            ],
-            "authentication": {},
-            "metaSortKey": -1677861950899,
-            "isPrivate": false,
-            "settingStoreCookies": true,
-            "settingSendCookies": true,
-            "settingDisableRenderRequestBody": false,
-            "settingEncodeUrl": true,
-            "settingRebuildPath": true,
-            "settingFollowRedirects": "global",
-            "_type": "request"
-        },
-        {
-            "_id": "fld_eb9e522942d94914984da0fb321c0f09",
-            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
-            "modified": 1677861947748,
-            "created": 1677861942886,
-            "name": "rapidapi",
-            "description": "",
-            "environment": {},
-            "environmentPropertyOrder": null,
-            "metaSortKey": -1670162170066,
-            "_type": "request_group"
-        },
-        {
-            "_id": "req_e1123f022892444abaa662a4765c04a1",
-            "parentId": "fld_eb9e522942d94914984da0fb321c0f09",
-            "modified": 1677862904314,
-            "created": 1677862213478,
-            "url": "https://movie-database-alternative.p.rapidapi.com/",
-            "name": "search",
-            "description": "",
-            "method": "GET",
-            "body": { "mimeType": "application/json", "text": "" },
-            "parameters": [
-                {
-                    "id": "pair_61afa88006e44c8c99a935f1dfd87b34",
-                    "name": "s",
-                    "value": "abc",
-                    "description": ""
-                },
-                {
-                    "id": "pair_2c92597d296a4a94a3be39a01f0a260e",
-                    "name": "r",
-                    "value": "json",
-                    "description": ""
-                },
-                {
-                    "id": "pair_bdacf7aa89d44c6bb1830e10951857ae",
-                    "name": "page",
-                    "value": "2",
-                    "description": ""
-                }
-            ],
-            "headers": [
-                {
-                    "id": "pair_0ea0b3958b4143c0a688bce998966a7b",
-                    "name": "X-RapidAPI-Key",
-                    "value": "514c4e9366msh7191d163dfecc7dp184743jsna74a5c0b77f3",
-                    "description": ""
-                },
-                { "name": "Content-Type", "value": "application/json" }
-            ],
-            "authentication": {},
-            "metaSortKey": -1677823355378,
             "isPrivate": false,
             "settingStoreCookies": true,
             "settingSendCookies": true,
@@ -1123,16 +1003,16 @@
         {
             "_id": "env_0ad2d5559e064bbaa17ba658befe13da",
             "parentId": "env_db75b3e5917d877d21f7c84272d094b11bf5be83",
-            "modified": 1678071001062,
+            "modified": 1678133392869,
             "created": 1677773201359,
             "name": "petflix",
             "data": {
                 "base_url": "localhost:3232",
-                "authorization": "user_authorization",
-                "authorization_admin": "admin_authorization"
+                "user_authorization": "user_authorization",
+                "admin_authorization": "admin_authorization"
             },
             "dataPropertyOrder": {
-                "&": ["base_url", "authorization", "authorization_admin"]
+                "&": ["base_url", "user_authorization", "admin_authorization"]
             },
             "color": "#7d69cb",
             "isPrivate": false,

@@ -7,7 +7,7 @@ class LikeReactController {
     }
     async handle(request: Request, response: Response) {
         try {
-            await this.likeReact.execute(request.userId, request.body);
+            await this.likeReact.execute(request.userId, request.query);
             return response.status(202).send();
         } catch (err: any) {
             return response.status(400).json({

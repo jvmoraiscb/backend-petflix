@@ -4,6 +4,9 @@
     "description": "Site de filmes para o PetEngComp",
     "main": "index.js",
     "license": "MIT",
+    "prisma": {
+        "seed": "ts-node prisma/seed.ts"
+    },
     "scripts": {
         "start:dev": "tsnd --transpile-only --respawn --exit-child --quiet --ignore-watch node_modules ./src/server.ts",
         "start:prod": "prisma migrate deploy && node build/server.js",
@@ -15,6 +18,8 @@
         "migrate:deploy": "prisma migrate deploy",
         "prisma:generate": "prisma generate",
         "prisma:pull": "prisma db push",
+        "prisma:admin": "npx prisma db seed",
+        "prisma:studio": "npx prisma studio",
         "gen:docs": "insomnia-documenter --config docs/insomnia.json -o docs",
         "docs": "serve docs"
     },
