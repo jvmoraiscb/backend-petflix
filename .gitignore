@@ -1,6 +1,16 @@
-node_modules
 # Keep environment variables out of version control
 .env
+
+# Nodejs
+node_modules
+
+# Database
 prisma/dev.db*
 data
 build
+
+# Documentation
+docs/bundle.css
+docs/bundle.css.map
+docs/bundle.js
+docs/bundle.js.map

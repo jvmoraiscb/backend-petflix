@@ -1,7 +1,7 @@
 {
     "_type": "export",
     "__export_format": 4,
-    "__export_date": "2023-03-06T02:07:04.918Z",
+    "__export_date": "2023-03-06T02:58:13.043Z",
     "__export_source": "insomnia.desktop.app:v2022.7.5",
     "resources": [
         {
@@ -1123,13 +1123,13 @@
         {
             "_id": "env_0ad2d5559e064bbaa17ba658befe13da",
             "parentId": "env_db75b3e5917d877d21f7c84272d094b11bf5be83",
-            "modified": 1677876179341,
+            "modified": 1678071001062,
             "created": 1677773201359,
             "name": "petflix",
             "data": {
                 "base_url": "localhost:3232",
-                "authorization": "secret",
-                "authorization_admin": "secret"
+                "authorization": "user_authorization",
+                "authorization_admin": "admin_authorization"
             },
             "dataPropertyOrder": {
                 "&": ["base_url", "authorization", "authorization_admin"]
