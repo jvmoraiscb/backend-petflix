@@ -4,7 +4,6 @@ interface IEvaluationRepository {
     create(
         evaluation: Omit<Evaluation, 'createdAt' | 'updatedAt'>
     ): Promise<Evaluation>;
-    getAll(userId: string): Promise<Evaluation[]>;
     update(
         evaluation: Omit<Evaluation, 'createdAt' | 'updatedAt' | 'imdbId'>
     ): Promise<Evaluation>;

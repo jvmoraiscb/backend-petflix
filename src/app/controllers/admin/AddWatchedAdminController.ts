@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { AddWatchedAdmin } from '../../../useCases/admin';
+import { AddWatchedAdmin } from '../../../useCases';
 
 class AddWatchedAdminController {
     constructor(private addWatchedAdmin: AddWatchedAdmin) {

@@ -1,9 +1,8 @@
 import { Router } from 'express';
-import { MoviesSearch } from '../../useCases/search';
-import { MoviesSearchController } from '../controllers/search';
-import { MovieApiRepository } from '../implementation/repositories/MovieApiRepository';
-
-import { isAuthMiddleware } from '../middlewares/isAuth';
+import { MoviesSearch } from '../../useCases';
+import { MoviesSearchController } from '../controllers';
+import { MovieApiRepository } from '../implementation';
+import { isAuthMiddleware } from '../middlewares';
 
 const movieApiRepository = new MovieApiRepository();
 

@@ -6,5 +6,4 @@ export interface IMovieRepository {
     suggestedMovies(): Promise<Movie[]>;
     watchedMovies(): Promise<Movie[]>;
     findByImdbId(imdbId: string): Promise<Movie | null>;
-    userWatchedMovies(userId: string): Promise<Movie[]>;
 }

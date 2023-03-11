@@ -6,20 +6,21 @@ import {
     RegisterGetAdmin,
     RegisterToggleAdmin,
     RemoveWatchedAdmin
-} from '../../useCases/admin';
+} from '../../useCases';
 import {
     AddWatchedAdminController,
     DeleteUserAdminController,
     GetUsersAdminController,
+    RegisterGetAdminController,
+    RegisterToggleAdminController,
     RemoveWatchedAdminController
-} from '../controllers/admin';
-import { RegisterToggleAdminController } from '../controllers/admin/RegisterToggleAdminController';
-import { RegisterGetAdminController } from '../controllers/admin/RegiterGetAdminController';
-import { MovieRepository, UserRepository } from '../implementation';
-import { AdminRepository } from '../implementation/repositories/AdminRepository';
-import { isAdminMiddleware } from '../middlewares/isAdmin';
-
-import { isAuthMiddleware } from '../middlewares/isAuth';
+} from '../controllers';
+import {
+    AdminRepository,
+    MovieRepository,
+    UserRepository
+} from '../implementation';
+import { isAdminMiddleware, isAuthMiddleware } from '../middlewares';
 
 const adminRepository = new AdminRepository();
 const movieRepository = new MovieRepository();

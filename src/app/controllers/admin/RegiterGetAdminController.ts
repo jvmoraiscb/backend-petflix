@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { RegisterGetAdmin } from '../../../useCases/admin';
+import { RegisterGetAdmin } from '../../../useCases';
 
 class RegisterGetAdminController {
     constructor(private registerGetAdmin: RegisterGetAdmin) {

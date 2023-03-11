@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { AmountOfAvatarsController } from '../controllers/avatar';
-import { AmountOfAvatars } from '../../useCases/avatar';
+import { AmountOfAvatars } from '../../useCases';
+import { AmountOfAvatarsController } from '../controllers';
 
 const amountOfAvatars = new AmountOfAvatars();
 

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { LikeReact } from '../../../useCases/react/LikeReact';
+import { LikeReact } from '../../../useCases';
 
 class LikeReactController {
     constructor(private likeReact: LikeReact) {

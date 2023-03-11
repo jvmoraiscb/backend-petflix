@@ -17,11 +17,21 @@ class UserRepository implements IUserRepository {
             include: {
                 likes: {
                     include: {
-                        evaluations: true,
+                        evaluations: {
+                            include: {
+                                user: {
+                                    select: {
+                                        name: true,
+                                        profilePic: true
+                                    }
+                                }
+                            }
+                        },
                         _count: {
                             select: {
                                 likes: true,
-                                dislikes: true
+                                dislikes: true,
+                                evaluations: true
                             }
                         }
                     }

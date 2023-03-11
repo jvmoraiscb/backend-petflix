@@ -1,25 +1,18 @@
 import { Router } from 'express';
-import {
-    GetMovie,
-    SuggestedMovies,
-    UserWatchedMovies,
-    WatchedMovies
-} from '../../useCases';
+import { GetMovie, SuggestedMovies, WatchedMovies } from '../../useCases';
 import {
     GetMovieController,
     SuggestedMoviesController,
     WatchedMoviesController
-} from '../controllers/movie';
-import { UserWatchedMoviesController } from '../controllers/movie/UserWatchedMoviesController';
+} from '../controllers';
 import { MovieRepository } from '../implementation';
-import { isAuthMiddleware } from '../middlewares/isAuth';
+import { isAuthMiddleware } from '../middlewares';
 
 const movieRepository = new MovieRepository();
 
 const suggestedMovies = new SuggestedMovies(movieRepository);
 const watchedMovies = new WatchedMovies(movieRepository);
 const getMovie = new GetMovie(movieRepository);
-const userWatchedMovies = new UserWatchedMovies(movieRepository);
 
 export const MovieRoute = (router: Router) => {
     router.get(
@@ -38,11 +31,5 @@ export const MovieRoute = (router: Router) => {
         '/movie',
         isAuthMiddleware,
         new GetMovieController(getMovie).handle
-    );
-
-    router.get(
-        '/movie/user',
-        isAuthMiddleware,
-        new UserWatchedMoviesController(userWatchedMovies).handle
     );
 };

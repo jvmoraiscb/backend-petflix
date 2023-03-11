@@ -103,37 +103,6 @@ class MovieRepository implements IMovieRepository {
             }
         });
     }
-
-    async userWatchedMovies(userId: string): Promise<Movie[]> {
-        return await database.movie.findMany({
-            where: {
-                evaluations: {
-                    some: {
-                        userId
-                    }
-                }
-            },
-            include: {
-                evaluations: {
-                    include: {
-                        user: {
-                            select: {
-                                name: true,
-                                profilePic: true
-                            }
-                        }
-                    }
-                },
-                _count: {
-                    select: {
-                        likes: true,
-                        dislikes: true,
-                        evaluations: true
-                    }
-                }
-            }
-        });
-    }
 }
 
 export { MovieRepository };

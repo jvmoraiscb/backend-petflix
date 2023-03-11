@@ -1,13 +1,11 @@
 import { Router } from 'express';
+import { BestMoviesRanking, MostEvaluationsRanking } from '../../useCases';
 import {
-    BestMoviesRanking,
-    MostEvaluationsRanking
-} from '../../useCases/ranking';
-import { MostEvaluationsRankingController } from '../controllers/ranking';
-import { BestMoviesRankingController } from '../controllers/ranking/BestMoviesRankingController';
-import { RankingRepository } from '../implementation/repositories/RankingRepository';
-
-import { isAuthMiddleware } from '../middlewares/isAuth';
+    BestMoviesRankingController,
+    MostEvaluationsRankingController
+} from '../controllers';
+import { RankingRepository } from '../implementation';
+import { isAuthMiddleware } from '../middlewares';
 
 const rankingRepository = new RankingRepository();
 

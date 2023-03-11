@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { AmountOfAvatars } from '../../../useCases/avatar';
+import { AmountOfAvatars } from '../../../useCases';
 
 class AmountOfAvatarsController {
     constructor(private amountOfAvatars: AmountOfAvatars) {

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { BestMoviesRanking } from '../../../useCases/ranking';
+import { BestMoviesRanking } from '../../../useCases';
 
 class BestMoviesRankingController {
     constructor(private bestMoviesRanking: BestMoviesRanking) {

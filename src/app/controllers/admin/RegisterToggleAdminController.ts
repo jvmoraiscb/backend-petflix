@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { RegisterToggleAdmin } from '../../../useCases/admin';
+import { RegisterToggleAdmin } from '../../../useCases';
 
 class RegisterToggleAdminController {
     constructor(private registerToggleAdmin: RegisterToggleAdmin) {

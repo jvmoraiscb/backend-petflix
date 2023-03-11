@@ -11,14 +11,6 @@ class EvaluationRepository implements IEvaluationRepository {
         });
     }
 
-    async getAll(userId: string): Promise<Evaluation[]> {
-        return await database.evaluation.findMany({
-            where: {
-                userId
-            }
-        });
-    }
-
     async update(
         evaluation: Omit<Evaluation, 'createdAt' | 'updatedAt'>
     ): Promise<Evaluation> {

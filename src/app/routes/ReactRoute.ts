@@ -1,12 +1,16 @@
 import { Router } from 'express';
-import { DislikeReact } from '../../useCases/react';
-import { LikeReact } from '../../useCases/react/LikeReact';
-import { DislikeReactController } from '../controllers/react';
-import { LikeReactController } from '../controllers/react/LikeReactController';
-import { MovieRepository, ReactRepository } from '../implementation';
-import { MovieApiRepository } from '../implementation/repositories/MovieApiRepository';
-
-import { isAuthMiddleware } from '../middlewares/isAuth';
+import { DislikeReact, GetLikeStatus, LikeReact } from '../../useCases';
+import {
+    DislikeReactController,
+    GetLikeStatusController,
+    LikeReactController
+} from '../controllers';
+import {
+    MovieApiRepository,
+    MovieRepository,
+    ReactRepository
+} from '../implementation';
+import { isAuthMiddleware } from '../middlewares';
 
 const reactRepository = new ReactRepository();
 const movieRepository = new MovieRepository();
@@ -22,8 +26,14 @@ const dislikeReact = new DislikeReact(
     movieRepository,
     movieApiRepository
 );
+const getLikeStatus = new GetLikeStatus(reactRepository, movieRepository);
 
 export const ReactRoute = (router: Router) => {
+    router.get(
+        '/react/status',
+        isAuthMiddleware,
+        new GetLikeStatusController(getLikeStatus).handle
+    );
     router.put(
         '/react/like',
         isAuthMiddleware,

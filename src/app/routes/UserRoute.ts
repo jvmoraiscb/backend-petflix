@@ -19,8 +19,7 @@ import {
     TokenGenerator,
     UserRepository
 } from '../implementation';
-import { isAuthMiddleware } from '../middlewares/isAuth';
-import { registerIsOnMiddleware } from '../middlewares/registerIsOn';
+import { isAuthMiddleware, registerIsOnMiddleware } from '../middlewares';
 
 const userRepository = new UserRepository();
 const passwordEncrypter = new PasswordEncrypter();

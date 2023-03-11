@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { RemoveWatchedAdmin } from '../../../useCases/admin';
+import { RemoveWatchedAdmin } from '../../../useCases';
 
 class RemoveWatchedAdminController {
     constructor(private removeWatchedAdmin: RemoveWatchedAdmin) {

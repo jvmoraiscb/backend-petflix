@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { DeleteUserAdmin } from '../../../useCases/admin';
+import { DeleteUserAdmin } from '../../../useCases';
+
 
 class DeleteUserAdminController {
     constructor(private deleteUserAdmin: DeleteUserAdmin) {

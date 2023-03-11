@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { MostEvaluationsRanking } from '../../../useCases/ranking';
+import { MostEvaluationsRanking } from '../../../useCases';
 
 class MostEvaluationsRankingController {
     constructor(private mostEvaluationsRanking: MostEvaluationsRanking) {

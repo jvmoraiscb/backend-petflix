@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { MoviesSearch } from '../../../useCases/search';
+import { MoviesSearch } from '../../../useCases';
 
 class MoviesSearchController {
     constructor(private moviesSearch: MoviesSearch) {

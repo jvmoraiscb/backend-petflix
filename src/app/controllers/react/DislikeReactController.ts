@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { DislikeReact } from '../../../useCases/react/DislikeReact';
+import { DislikeReact } from '../../../useCases';
 
 class DislikeReactController {
     constructor(private dislikeReact: DislikeReact) {
