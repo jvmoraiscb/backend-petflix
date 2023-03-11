@@ -1,9 +1,54 @@
 {
     "_type": "export",
     "__export_format": 4,
-    "__export_date": "2023-03-06T20:21:27.301Z",
+    "__export_date": "2023-03-11T04:46:58.814Z",
     "__export_source": "insomnia.desktop.app:v2022.7.5",
     "resources": [
+        {
+            "_id": "req_268d7f3c37c84916828d0b066e7f0da3",
+            "parentId": "fld_bec8acff09544ed6b5f539137a2aa95e",
+            "modified": 1678509601679,
+            "created": 1678509571228,
+            "url": "{{ _.base_url }}/api/quote",
+            "name": "getRandomQuote",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1678509571228,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_bec8acff09544ed6b5f539137a2aa95e",
+            "parentId": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "modified": 1678509568302,
+            "created": 1678509568302,
+            "name": "quotes",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1678509568302,
+            "_type": "request_group"
+        },
+        {
+            "_id": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
+            "parentId": null,
+            "modified": 1670162161313,
+            "created": 1670162161313,
+            "name": "PetFilmes",
+            "description": "",
+            "scope": "collection",
+            "_type": "workspace"
+        },
         {
             "_id": "req_776d62f537ae4e988ef134e04c3ff57e",
             "parentId": "fld_22fc8db5e7d0473c9d6757ad4d69364f",
@@ -38,16 +83,6 @@
             "environmentPropertyOrder": null,
             "metaSortKey": -1677784729511,
             "_type": "request_group"
-        },
-        {
-            "_id": "wrk_d3212ce5da0040cb8a45bd62a616dc79",
-            "parentId": null,
-            "modified": 1670162161313,
-            "created": 1670162161313,
-            "name": "PetFilmes",
-            "description": "",
-            "scope": "collection",
-            "_type": "workspace"
         },
         {
             "_id": "req_e7db9832bca549d4969b535b613afede",

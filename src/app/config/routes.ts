@@ -7,7 +7,8 @@ import {
     ReactRoute,
     UserRoute,
     AvatarRoute,
-    AdminRoute
+    AdminRoute,
+    QuoteRoute
 } from '../routes';
 
 const routes = (app: Express) => {
@@ -22,6 +23,7 @@ const routes = (app: Express) => {
     MoviesApiRoute(router);
     AdminRoute(router);
     AvatarRoute(router);
+    QuoteRoute(router);
 };
 
 export { routes };
