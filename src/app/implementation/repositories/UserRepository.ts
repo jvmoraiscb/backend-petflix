@@ -15,11 +15,18 @@ class UserRepository implements IUserRepository {
                 id: userId
             },
             include: {
-                _count: {
-                    select: {
-                        evaluations: true
+                likes: {
+                    include: {
+                        evaluations: true,
+                        _count: {
+                            select: {
+                                likes: true,
+                                dislikes: true
+                            }
+                        }
                     }
-                }
+                },
+                evaluations: true
             }
         });
     }
@@ -30,11 +37,18 @@ class UserRepository implements IUserRepository {
                 email: userEmail
             },
             include: {
-                _count: {
-                    select: {
-                        evaluations: true
+                likes: {
+                    include: {
+                        evaluations: true,
+                        _count: {
+                            select: {
+                                likes: true,
+                                dislikes: true
+                            }
+                        }
                     }
-                }
+                },
+                evaluations: true
             }
         });
     }

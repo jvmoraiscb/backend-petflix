@@ -1,5 +1,5 @@
 import { number, object, string } from 'yup';
-import { MovieApi } from '../../entities/MovieApi';
+import { snippetMovieApi } from '../../entities/MovieApi';
 import { IMovieApiRepository } from '../../repositories';
 
 const bodySchema = object({
@@ -10,7 +10,7 @@ const bodySchema = object({
 class MoviesSearch {
     constructor(private movieApiRepository: IMovieApiRepository) {}
 
-    async execute(body: any): Promise<MovieApi[]> {
+    async execute(body: any): Promise<snippetMovieApi[]> {
         body = await bodySchema.validate(body);
         const { query, page } = body;
         const movies = await this.movieApiRepository.find(query, page);

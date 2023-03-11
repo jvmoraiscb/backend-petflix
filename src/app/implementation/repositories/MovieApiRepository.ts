@@ -1,5 +1,6 @@
+import { MovieType } from '@prisma/client';
 import axios from 'axios';
-import { MovieApi } from '../../../entities/MovieApi';
+import { MovieApi, snippetMovieApi } from '../../../entities/MovieApi';
 import { IMovieApiRepository } from '../../../repositories';
 import { IdGenerator } from '../providers';
 import { MovieRepository } from './MovieRepository';
@@ -9,12 +10,12 @@ const idGenerator = new IdGenerator();
 
 type IFind = {
     Response: string;
-    Search: MovieApi[];
+    Search: snippetMovieApi[];
     totalResults: string;
 };
 
 class MovieApiRepository implements IMovieApiRepository {
-    async find(query: string, page: number): Promise<MovieApi[]> {
+    async find(query: string, page: number): Promise<snippetMovieApi[]> {
         const options = {
             method: 'GET',
             url: 'https://movie-database-alternative.p.rapidapi.com/',
@@ -34,7 +35,43 @@ class MovieApiRepository implements IMovieApiRepository {
         if (body.Response === 'False') {
             return [];
         }
-        return body.Search;
+
+        const movies: snippetMovieApi[] = [];
+
+        for (const movie of body.Search) {
+            const movieExists: any = await movieRepository.findByImdbId(
+                movie.imdbID
+            );
+            if (movieExists) {
+                movie.isInDatabase = true;
+                if (movieExists.movieType === MovieType.SUGGESTED) {
+                    movie.wasWatched = false;
+                } else {
+                    movie.wasWatched = true;
+                }
+                movie.evaluations = movieExists._count.evaluations;
+                movie.likes = movieExists._count.likes;
+                movie.dislikes = movieExists._count.dislikes;
+                let avg = 0;
+                if (movieExists._count.evaluations > 0) {
+                    for (let j = 0; j < movieExists.evaluations.length; j++) {
+                        avg += movieExists.evaluations[j].rating;
+                    }
+                    avg /= movieExists.evaluations.length;
+                }
+                movie.rating = avg;
+            } else {
+                movie.isInDatabase = false;
+                movie.wasWatched = false;
+                movie.evaluations = 0;
+                movie.likes = 0;
+                movie.dislikes = 0;
+                movie.rating = 0;
+            }
+            movies.push(movie);
+        }
+
+        return movies;
     }
 
     async create(imdbId: string): Promise<void> {
