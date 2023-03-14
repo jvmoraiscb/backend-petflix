@@ -17,20 +17,12 @@ class UserRepository implements IUserRepository {
             include: {
                 likes: {
                     include: {
-                        evaluations: {
-                            include: {
-                                user: {
-                                    select: {
-                                        name: true,
-                                        profilePic: true
-                                    }
-                                }
-                            }
-                        },
+                        evaluations: true,
                         _count: {
                             select: {
                                 likes: true,
-                                dislikes: true
+                                dislikes: true,
+                                evaluations: true
                             }
                         }
                     }
@@ -44,20 +36,6 @@ class UserRepository implements IUserRepository {
         return database.user.findUnique({
             where: {
                 email: userEmail
-            },
-            include: {
-                likes: {
-                    include: {
-                        evaluations: true,
-                        _count: {
-                            select: {
-                                likes: true,
-                                dislikes: true
-                            }
-                        }
-                    }
-                },
-                evaluations: true
             }
         });
     }

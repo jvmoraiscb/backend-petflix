@@ -5,15 +5,24 @@ import {
     SuggestedMoviesController,
     WatchedMoviesController
 } from '../controllers';
-import { MovieRepository, ReactRepository } from '../implementation';
+import {
+    MovieApiRepository,
+    MovieRepository,
+    ReactRepository
+} from '../implementation';
 import { isAuthMiddleware } from '../middlewares';
 
 const movieRepository = new MovieRepository();
+const movieApiRepository = new MovieApiRepository();
 const reactRepository = new ReactRepository();
 
 const suggestedMovies = new SuggestedMovies(movieRepository);
 const watchedMovies = new WatchedMovies(movieRepository);
-const getMovie = new GetMovie(movieRepository, reactRepository);
+const getMovie = new GetMovie(
+    movieRepository,
+    reactRepository,
+    movieApiRepository
+);
 
 export const MovieRoute = (router: Router) => {
     router.get(
