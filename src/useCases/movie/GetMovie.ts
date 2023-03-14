@@ -30,7 +30,7 @@ class GetMovie {
                 throw new Error('movie does not exists');
             }
             return {
-                id: undefined,
+                id: '',
                 imdbId: movieApi.imdbID,
                 title: movieApi.Title,
                 type: movieApi.Type,
@@ -43,8 +43,8 @@ class GetMovie {
                 writer: movieApi.Writer,
                 actors: movieApi.Actors,
                 movieType: 'SUGGESTED',
-                createdAt: undefined,
-                updatedAt: undefined,
+                createdAt: '',
+                updatedAt: '',
                 evaluations: [],
                 _count: {
                     likes: 0,
