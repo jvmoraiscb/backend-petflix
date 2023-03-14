@@ -30,8 +30,7 @@ class UserRepository implements IUserRepository {
                         _count: {
                             select: {
                                 likes: true,
-                                dislikes: true,
-                                evaluations: true
+                                dislikes: true
                             }
                         }
                     }

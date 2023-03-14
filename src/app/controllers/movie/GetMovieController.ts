@@ -7,7 +7,10 @@ class GetMovieController {
     }
     async handle(request: Request, response: Response) {
         try {
-            const movie = await this.getMovie.execute(request.query);
+            const movie = await this.getMovie.execute(
+                request.userId,
+                request.query
+            );
             return response.status(202).json(movie);
         } catch (err: any) {
             return response.status(400).json({

@@ -2,8 +2,7 @@ import { object, string } from 'yup';
 import {
     IMovieApiRepository,
     IMovieRepository,
-    IReactRepository,
-    likeStatus
+    IReactRepository
 } from '../../repositories';
 
 const bodySchema = object({
@@ -25,13 +24,13 @@ class DislikeReact {
         if (!movie) {
             await this.movieApiRepository.create(imdbId);
         }
-        const isLiked = await this.reactRepository.getLikeStatus(
+        const likeStatus = await this.reactRepository.getLikeStatus(
             userId,
             imdbId
         );
-        if (isLiked === likeStatus.none)
+        if (likeStatus === 'none')
             await this.reactRepository.dislike(userId, imdbId);
-        else if (isLiked === likeStatus.dislike)
+        else if (likeStatus === 'disliked')
             await this.reactRepository.removeDislike(userId, imdbId);
     }
 }

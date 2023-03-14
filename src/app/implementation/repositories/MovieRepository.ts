@@ -1,4 +1,5 @@
 import { Movie, MovieType } from '@prisma/client';
+import { snippetMovie } from '../../../entities';
 import { MovieApi } from '../../../entities/MovieApi';
 import { IMovieRepository } from '../../../repositories';
 import { database } from '../../config/database';
@@ -23,22 +24,13 @@ class MovieRepository implements IMovieRepository {
         });
     }
 
-    async suggestedMovies(): Promise<Movie[]> {
-        return await database.movie.findMany({
+    async suggestedMovies(): Promise<snippetMovie[]> {
+        const movies = await database.movie.findMany({
             where: {
                 movieType: MovieType.SUGGESTED
             },
             include: {
-                evaluations: {
-                    include: {
-                        user: {
-                            select: {
-                                name: true,
-                                profilePic: true
-                            }
-                        }
-                    }
-                },
+                evaluations: true,
                 _count: {
                     select: {
                         likes: true,
@@ -48,24 +40,42 @@ class MovieRepository implements IMovieRepository {
                 }
             }
         });
+
+        const suggestedMovies: snippetMovie[] = [];
+        for (const movie of movies) {
+            const { likes, dislikes, evaluations } = movie._count;
+            const { imdbId, poster } = movie;
+            let avg = 0;
+            if (evaluations > 0) {
+                for (let i = 0; i < evaluations; i++) {
+                    avg += movie.evaluations[i].rating;
+                }
+                avg /= evaluations;
+            }
+            const rating = avg;
+            const wasWatched =
+                movie.movieType === MovieType.WATCHED ? true : false;
+
+            suggestedMovies.push({
+                wasWatched,
+                imdbId,
+                poster,
+                evaluations,
+                rating,
+                likes,
+                dislikes
+            });
+        }
+        return suggestedMovies;
     }
 
-    async watchedMovies(): Promise<Movie[]> {
-        return await database.movie.findMany({
+    async watchedMovies(): Promise<snippetMovie[]> {
+        const movies = await database.movie.findMany({
             where: {
                 movieType: MovieType.WATCHED
             },
             include: {
-                evaluations: {
-                    include: {
-                        user: {
-                            select: {
-                                name: true,
-                                profilePic: true
-                            }
-                        }
-                    }
-                },
+                evaluations: true,
                 _count: {
                     select: {
                         likes: true,
@@ -75,10 +85,38 @@ class MovieRepository implements IMovieRepository {
                 }
             }
         });
+        const watchedMovies: snippetMovie[] = [];
+        for (const movie of movies) {
+            const { likes, dislikes, evaluations } = movie._count;
+            const { imdbId, poster } = movie;
+            let avg = 0;
+            if (evaluations > 0) {
+                for (let i = 0; i < evaluations; i++) {
+                    avg += movie.evaluations[i].rating;
+                }
+                avg /= evaluations;
+            }
+            const rating = avg;
+            const wasWatched =
+                movie.movieType === MovieType.WATCHED ? true : false;
+
+            watchedMovies.push({
+                wasWatched,
+                imdbId,
+                poster,
+                evaluations,
+                rating,
+                likes,
+                dislikes
+            });
+        }
+        return watchedMovies;
     }
 
-    async findByImdbId(imdbId: string): Promise<Movie | null> {
-        return await database.movie.findUnique({
+    async findByImdbId(
+        imdbId: string
+    ): Promise<(Movie & { rating: number }) | null> {
+        const movie = await database.movie.findUnique({
             where: {
                 imdbId
             },
@@ -102,6 +140,19 @@ class MovieRepository implements IMovieRepository {
                 }
             }
         });
+        let avg = 0;
+        if (movie != null) {
+            if (movie.evaluations.length > 0) {
+                for (let i = 0; i < movie.evaluations.length; i++) {
+                    avg += movie.evaluations[i].rating;
+                }
+                avg /= movie.evaluations.length;
+            }
+            const rating = avg;
+
+            return { ...movie, rating };
+        }
+        return null;
     }
 }
 
