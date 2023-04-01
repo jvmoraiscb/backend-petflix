@@ -21,7 +21,13 @@ services:
         restart: always
         command: npm run start:prod
         environment:
-            DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@petflix-database:5432/petflix
+            DATABASE_URL: ${DATABASE_URL}
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            ADMIN_EMAIL: ${ADMIN_EMAIL}
+            ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+            RAPID_API_KEY: ${RAPID_API_KEY}
+            JWT_PASS: ${JWT_PASS}
         ports:
             - 3232:3000
         networks:
