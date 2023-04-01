@@ -11,17 +11,3 @@ export type MovieApi = {
     Writer: string;
     Actors: string;
 };
-
-export type snippetMovieApi = {
-    isInDatabase: boolean;
-    wasWatched: boolean;
-    imdbID: string;
-    Title: string;
-    Type: string;
-    Year: string;
-    Poster: string;
-    evaluations: number;
-    rating: number;
-    likes: number;
-    dislikes: number;
-};

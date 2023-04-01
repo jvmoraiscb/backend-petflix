@@ -1,9 +1,11 @@
 import { Movie } from '@prisma/client';
-import { MovieApi } from '../entities/MovieApi';
+import { MovieApi, snippetMovie } from '../entities';
 
 export interface IMovieRepository {
     create(movie: MovieApi & { id: string }): Promise<void>;
-    suggestedMovies(): Promise<Movie[]>;
-    watchedMovies(): Promise<Movie[]>;
-    findByImdbId(imdbId: string): Promise<Movie | null>;
+    suggestedMovies(): Promise<snippetMovie[]>;
+    watchedMovies(): Promise<snippetMovie[]>;
+    findByImdbId(
+        imdbId: string
+    ): Promise<(Movie & { rating: number }) | null>;
 }

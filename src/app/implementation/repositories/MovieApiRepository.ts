@@ -1,6 +1,6 @@
 import { MovieType } from '@prisma/client';
 import axios from 'axios';
-import { MovieApi, snippetMovieApi } from '../../../entities/MovieApi';
+import { MovieApi, snippetMovie } from '../../../entities';
 import { IMovieApiRepository } from '../../../repositories';
 import { IdGenerator } from '../providers';
 import { MovieRepository } from './MovieRepository';
@@ -10,12 +10,15 @@ const idGenerator = new IdGenerator();
 
 type IFind = {
     Response: string;
-    Search: snippetMovieApi[];
+    Search: MovieApi[];
     totalResults: string;
 };
 
 class MovieApiRepository implements IMovieApiRepository {
-    async find(query: string, page: number): Promise<snippetMovieApi[]> {
+    async find(
+        query: string,
+        page: number
+    ): Promise<{ movies: snippetMovie[]; totalResults: number }> {
         const options = {
             method: 'GET',
             url: 'https://movie-database-alternative.p.rapidapi.com/',
@@ -33,25 +36,26 @@ class MovieApiRepository implements IMovieApiRepository {
         }
 
         if (body.Response === 'False') {
-            return [];
+            return { movies: [], totalResults: 0 };
         }
-
-        const movies: snippetMovieApi[] = [];
-
+        const movies: snippetMovie[] = [];
         for (const movie of body.Search) {
             const movieExists: any = await movieRepository.findByImdbId(
                 movie.imdbID
             );
+            const imdbId = movie.imdbID;
+            const poster = movie.Poster;
+            let wasWatched = false;
+            let evaluations = 0;
+            let likes = 0;
+            let dislikes = 0;
+            let rating = 0;
             if (movieExists) {
-                movie.isInDatabase = true;
-                if (movieExists.movieType === MovieType.SUGGESTED) {
-                    movie.wasWatched = false;
-                } else {
-                    movie.wasWatched = true;
-                }
-                movie.evaluations = movieExists._count.evaluations;
-                movie.likes = movieExists._count.likes;
-                movie.dislikes = movieExists._count.dislikes;
+                wasWatched =
+                    movieExists.movieType === MovieType.WATCHED ? true : false;
+                evaluations = movieExists._count.evaluations;
+                likes = movieExists._count.likes;
+                dislikes = movieExists._count.dislikes;
                 let avg = 0;
                 if (movieExists._count.evaluations > 0) {
                     for (let j = 0; j < movieExists.evaluations.length; j++) {
@@ -59,19 +63,20 @@ class MovieApiRepository implements IMovieApiRepository {
                     }
                     avg /= movieExists.evaluations.length;
                 }
-                movie.rating = avg;
-            } else {
-                movie.isInDatabase = false;
-                movie.wasWatched = false;
-                movie.evaluations = 0;
-                movie.likes = 0;
-                movie.dislikes = 0;
-                movie.rating = 0;
+                rating = avg;
             }
-            movies.push(movie);
+            movies.push({
+                wasWatched,
+                imdbId,
+                poster,
+                evaluations,
+                rating,
+                likes,
+                dislikes
+            });
         }
 
-        return movies;
+        return { movies: movies, totalResults: parseInt(body.totalResults) };
     }
 
     async create(imdbId: string): Promise<void> {

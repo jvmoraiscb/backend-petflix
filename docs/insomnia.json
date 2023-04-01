@@ -1,7 +1,7 @@
 {
     "_type": "export",
     "__export_format": 4,
-    "__export_date": "2023-03-11T22:15:56.068Z",
+    "__export_date": "2023-03-14T18:37:47.705Z",
     "__export_source": "insomnia.desktop.app:v2023.1.0",
     "resources": [
         {
@@ -232,7 +232,7 @@
         {
             "_id": "req_14c586debb2d4f168a6b840ad4c7d323",
             "parentId": "fld_c230f2b3edf9406398410a7d067e8d51",
-            "modified": 1678570967044,
+            "modified": 1678818149864,
             "created": 1677762762231,
             "url": "{{ _.base_url }}/api/movie",
             "name": "getMovie",
@@ -243,7 +243,7 @@
                 {
                     "id": "pair_9a0593fa6a8f48f788559bc99c753799",
                     "name": "imdbId",
-                    "value": "tt0463985",
+                    "value": "tt0232500",
                     "description": ""
                 }
             ],
@@ -342,7 +342,7 @@
         {
             "_id": "req_c37eb9929b1b4b4999c1a64b8cc01155",
             "parentId": "fld_afbfb382795f42c7b028e3200578615d",
-            "modified": 1678570987171,
+            "modified": 1678766715582,
             "created": 1677712632364,
             "url": "{{ _.base_url }}/api/admin/addwatched",
             "name": "addWatched",
@@ -353,7 +353,7 @@
                 {
                     "id": "pair_8d898cb72361444f849006fe3aaa4656",
                     "name": "imdbId",
-                    "value": "tt0463985",
+                    "value": "tt0041349",
                     "description": ""
                 }
             ],
@@ -549,7 +549,7 @@
         {
             "_id": "req_fdb45417c98f4d729966d1d27fdc660e",
             "parentId": "fld_f417370e9d7241e5bab56aa5ff44a608",
-            "modified": 1678571171337,
+            "modified": 1678766724791,
             "created": 1677689199983,
             "url": "{{ _.base_url }}/api/evaluation",
             "name": "createEvaluation",
@@ -557,7 +557,7 @@
             "method": "POST",
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"rating\": 5,\n\t\"comment\": \"Velozes e furiosos em tokyo é muito bom, pena que nao da para assistir na netlix.\",\n\t\"imdbId\": \"tt0463985\",\n\t\"stream\": \"piratex\"\n}"
+                "text": "{\n\t\"rating\": 5,\n\t\"comment\": \"Velozes e furiosos em tokyo é muito bom, pena que nao da para assistir na netlix.\",\n\t\"imdbId\": \"tt0041349\",\n\t\"stream\": \"piratex\"\n}"
             },
             "parameters": [],
             "headers": [
@@ -759,7 +759,7 @@
         {
             "_id": "req_940337c517644c3c9ff827c79cb803f1",
             "parentId": "fld_c1ca2072aef44ac3bb3efc99337f8dc6",
-            "modified": 1678571082585,
+            "modified": 1678766492323,
             "created": 1677804098009,
             "url": "{{ _.base_url }}/api/login",
             "name": "loginUser",
@@ -860,7 +860,7 @@
         {
             "_id": "req_85bbad193edc4be2a4c598ff3fd1047e",
             "parentId": "fld_fd302d867b0a427d83f65dac56e6dd6b",
-            "modified": 1678134027641,
+            "modified": 1678740511385,
             "created": 1677685778657,
             "url": "{{ _.base_url }}/api/react/like",
             "name": "like",
@@ -871,7 +871,7 @@
                 {
                     "id": "pair_58858e2693a447f8ab8ce89d73816f50",
                     "name": "imdbId",
-                    "value": "tt0463985",
+                    "value": "tt0041349",
                     "description": ""
                 }
             ],
@@ -909,7 +909,7 @@
         {
             "_id": "req_e7c3dacb585f4c69bfa68ee812fbfeaa",
             "parentId": "fld_fd302d867b0a427d83f65dac56e6dd6b",
-            "modified": 1678134038042,
+            "modified": 1678766397282,
             "created": 1677685816654,
             "url": "{{ _.base_url }}/api/react/dislike",
             "name": "dislike",
@@ -920,7 +920,7 @@
                 {
                     "id": "pair_4ad9ecd578de4957b3e68767cc8f2e93",
                     "name": "imdbId",
-                    "value": "tt0463985",
+                    "value": "tt0041349",
                     "description": ""
                 }
             ],
@@ -934,43 +934,6 @@
             ],
             "authentication": {},
             "metaSortKey": -1677657693743.5,
-            "isPrivate": false,
-            "settingStoreCookies": true,
-            "settingSendCookies": true,
-            "settingDisableRenderRequestBody": false,
-            "settingEncodeUrl": true,
-            "settingRebuildPath": true,
-            "settingFollowRedirects": "global",
-            "_type": "request"
-        },
-        {
-            "_id": "req_050cd42f28d54dc3903e276cca8e4232",
-            "parentId": "fld_fd302d867b0a427d83f65dac56e6dd6b",
-            "modified": 1678570875028,
-            "created": 1678570823060,
-            "url": "{{ _.base_url }}/api/react/status",
-            "name": "getLikeStatus",
-            "description": "",
-            "method": "GET",
-            "body": {},
-            "parameters": [
-                {
-                    "id": "pair_968ace4806cb4a0cabc5421b79dd2de9",
-                    "name": "imdbId",
-                    "value": "tt0463985",
-                    "description": ""
-                }
-            ],
-            "headers": [
-                {
-                    "id": "pair_5726f2a278274f2689119e8a33c4cf9c",
-                    "name": "authorization",
-                    "value": "{{ _.user_authorization }}",
-                    "description": ""
-                }
-            ],
-            "authentication": {},
-            "metaSortKey": -1677657693693.5,
             "isPrivate": false,
             "settingStoreCookies": true,
             "settingSendCookies": true,
@@ -1015,7 +978,7 @@
         {
             "_id": "env_0ad2d5559e064bbaa17ba658befe13da",
             "parentId": "env_db75b3e5917d877d21f7c84272d094b11bf5be83",
-            "modified": 1678572927713,
+            "modified": 1678819031150,
             "created": 1677773201359,
             "name": "petflix",
             "data": {

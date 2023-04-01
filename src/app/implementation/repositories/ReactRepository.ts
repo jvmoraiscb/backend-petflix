@@ -1,8 +1,8 @@
-import { IReactRepository, likeStatus } from '../../../repositories';
+import { IReactRepository } from '../../../repositories';
 import { database } from '../../config/database';
 
 class ReactRepository implements IReactRepository {
-    async getLikeStatus(userId: string, imdbId: string): Promise<likeStatus> {
+    async getLikeStatus(userId: string, imdbId: string): Promise<string> {
         const user = await database.user.findUnique({
             where: {
                 id: userId
@@ -23,11 +23,11 @@ class ReactRepository implements IReactRepository {
 
             console.log(liked + '\n' + disliked);
 
-            if (liked != undefined) return likeStatus.like;
-            if (disliked != undefined) return likeStatus.dislike;
-            return likeStatus.none;
+            if (liked != undefined) return 'liked';
+            if (disliked != undefined) return 'disliked';
+            return 'none';
         }
-        return likeStatus.none;
+        return 'none';
     }
     async like(userId: string, imdbId: string): Promise<void> {
         await database.user.update({
